@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>建立本地光盘 yum 源 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="一、 将CentOS安装光盘放入光驱并挂载1.  将RHE L7 安装光盘放入光驱 2. 挂载1.  创建 &#x2F;cdrom 目录2. 把光盘 cdrom 挂载到 &#x2F;cdrom 下 执行命令： 123[root@localhost ~]# mkdir &#x2F;cdrom					 [root@localhost ~]# mount &#x2F;dev&#x2F;cdrom &#x2F;cdrom           mount: &#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建立本地光盘 yum 源">
+<meta property="og:url" content="http://example.com/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、 将CentOS安装光盘放入光驱并挂载1.  将RHE L7 安装光盘放入光驱 2. 挂载1.  创建 &#x2F;cdrom 目录2. 把光盘 cdrom 挂载到 &#x2F;cdrom 下 执行命令： 123[root@localhost ~]# mkdir &#x2F;cdrom					 [root@localhost ~]# mount &#x2F;dev&#x2F;cdrom &#x2F;cdrom           mount: &#x2F;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/05/21/img/yum1.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/yum2.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/yum3.png">
+<meta property="article:published_time" content="2021-05-21T11:54:18.670Z">
+<meta property="article:modified_time" content="2021-05-24T00:20:57.955Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/21/img/yum1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,265 +158,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-建立本地光盘 yum 源" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-05-21T12:07:32.794Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Win10下使用hexo框架在github上搭建个人博客</a>
+    <h1 class="article-title" itemprop="name">
+      建立本地光盘 yum 源
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/" class="archive-article-date">
+        
+        <a href="/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/" class="archive-article-date">
   	<time datetime="2021-05-21T11:54:18.670Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/">建立本地光盘 yum 源</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="一、-将CentOS安装光盘放入光驱并挂载"><a href="#一、-将CentOS安装光盘放入光驱并挂载" class="headerlink" title="一、 将CentOS安装光盘放入光驱并挂载"></a>一、 将CentOS安装光盘放入光驱并挂载</h2><h3 id="1-将RHE-L7-安装光盘放入光驱"><a href="#1-将RHE-L7-安装光盘放入光驱" class="headerlink" title="1.  将RHE L7 安装光盘放入光驱"></a>1.  将RHE L7 安装光盘放入光驱</h3><p><img src="../img/yum1.png" alt="1621736117881"></p>
+<h3 id="2-挂载"><a href="#2-挂载" class="headerlink" title="2. 挂载"></a>2. 挂载</h3><p>1.  创建 /cdrom 目录<br>2. 把光盘 cdrom 挂载到 /cdrom 下</p>
+<p>执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir /cdrom					 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># mount /dev/cdrom /cdrom           </span></span><br><span class="line">mount: /dev/sr0 写保护，将以只读方式挂载</span><br></pre></td></tr></table></figure>
 
+
+
+<h2 id="二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到-cdrom-目录"><a href="#二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到-cdrom-目录" class="headerlink" title="二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到 /cdrom 目录"></a>二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到 <code>/cdrom</code> 目录</h2><ul>
+<li>在文件 /etc/fstab 里添加内容 <code>/dev/sr0 /mnt iso9660 defaults,ro 0 0</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># echo &quot;/dev/sr0 /cdrom iso9660 defaults,ro 0 0&quot; &gt;&gt; /etc/fstab</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、用yum-config-manager命令生成一个yum源的模板文件cdrom-repo"><a href="#三、用yum-config-manager命令生成一个yum源的模板文件cdrom-repo" class="headerlink" title="三、用yum-config-manager命令生成一个yum源的模板文件cdrom.repo"></a>三、用yum-config-manager命令生成一个yum源的模板文件cdrom.repo</h2><p>1. 备份操作系统默认的源</p>
+<p>2. 生成文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir /etc/yum.repos.d/repo_bak</span></span><br><span class="line">[root@localhost ~]<span class="comment"># mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/repo_bak/</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum-config-manager --add-repo=file:///cdrom</span></span><br><span class="line">已加载插件：fastestmirror, langpacks</span><br><span class="line">adding repo from: file:///cdrom</span><br><span class="line"></span><br><span class="line">[cdrom]</span><br><span class="line">name=added from: file:///cdrom</span><br><span class="line">baseurl=file:///cdrom</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、-将自动生成的模板文件-etc-yum-repos-d-cdrom-repo-编辑如下"><a href="#四、-将自动生成的模板文件-etc-yum-repos-d-cdrom-repo-编辑如下" class="headerlink" title="四、 将自动生成的模板文件/etc/yum.repos.d/cdrom.repo 编辑如下:"></a>四、 将自动生成的模板文件/etc/yum.repos.d/cdrom.repo 编辑如下:</h2><p>执行命令 <code>ls /cdrom</code> 复制文件名 <code>RPM-GPG-KEY-CentOS-7</code></p>
+<p>执行命令 <code>vim /etc/yum.repos.d/cdrom.repo </code> 编辑如下</p>
+<p><img src="../img/yum2.png" alt="1621742178492"></p>
+<h2 id="五、导入公钥文件-以校验GPG签名-用来验证要安装的包是不是RedHat官方的-→查看系统中所有的yum资源库配置信息"><a href="#五、导入公钥文件-以校验GPG签名-用来验证要安装的包是不是RedHat官方的-→查看系统中所有的yum资源库配置信息" class="headerlink" title="五、导入公钥文件,以校验GPG签名(用来验证要安装的包是不是RedHat官方的)→查看系统中所有的yum资源库配置信息"></a>五、导入公钥文件,以校验GPG签名(用来验证要安装的包是不是RedHat官方的)→查看系统中所有的yum资源库配置信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># rpm --import /cdrom/RPM-GPG-KEY-CentOS-7</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum repolist</span></span><br><span class="line">已加载插件：fastestmirror, langpacks</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line">cdrom                                                    | 3.6 kB     00:00     </span><br><span class="line">(1/2): cdrom/group_gz                                      | 153 kB   00:00     </span><br><span class="line">(2/2): cdrom/primary_db                                    | 3.3 MB   00:00     </span><br><span class="line">源标识                      源名称                                         状态</span><br><span class="line">cdrom                      added from: file:///cdrom                     4,070</span><br><span class="line">repolist: 4,070</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、-清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息"><a href="#六、-清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息" class="headerlink" title="六、 清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息"></a>六、 清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># yum clean all</span></span><br><span class="line">已加载插件：fastestmirror, langpacks</span><br><span class="line">正在清理软件源： cdrom</span><br><span class="line">Cleaning up list of fastest mirrors</span><br><span class="line">[root@localhost ~]<span class="comment"># yum makecache</span></span><br><span class="line">已加载插件：fastestmirror, langpacks</span><br><span class="line">Determining fastest mirrors</span><br><span class="line">cdrom                                                               | 3.6 kB  00:00:00   </span><br><span class="line">(1/4): cdrom/group_gz                                               | 153 kB  00:00:00   </span><br><span class="line">(2/4): cdrom/primary_db                                             | 3.3 MB  00:00:00   </span><br><span class="line">(3/4): cdrom/other_db                                               | 1.3 MB  00:00:00   </span><br><span class="line">(4/4): cdrom/filelists_db                                           | 3.3 MB  00:00:00   </span><br><span class="line">元数据缓存已建立</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="七、-验证yum源是否可用。下面使用命令行安装httpd-服务软件包如下"><a href="#七、-验证yum源是否可用。下面使用命令行安装httpd-服务软件包如下" class="headerlink" title="七、 验证yum源是否可用。下面使用命令行安装httpd 服务软件包如下"></a>七、 验证yum源是否可用。下面使用命令行安装httpd 服务软件包如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># yum -y install httpd</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="../img/yum3.png" alt="1621743120528"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
-  	<time datetime="2021-05-21T11:53:40.575Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Win10下使用hexo框架在github上搭建个人博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">部署 NFS 服务实现文件共享</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">部署 NFS 服务实现文件共享</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/Samba%20%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-05-21T11:53:18.734Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/Samba%20%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%8E%A7%E5%88%B6/">Samba 服务的安装与运行控制</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/DHCP/" class="archive-article-date">
-  	<time datetime="2021-05-21T11:52:43.807Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/DHCP/">DHCP</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/21/DNS/" class="archive-article-date">
-  	<time datetime="2021-05-21T11:51:54.271Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/21/DNS/">DNS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/20/Markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-05-21T04:26:32.405Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/20/Markdown%E8%AF%AD%E6%B3%95/">Markdown 语法与小技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/20/Win10%20Git%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-05-20T09:47:22.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/20/Win10%20Git%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Win10 Git 安装教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/18/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-05-18T10:22:18.024Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/18/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Win10下使用hexo框架在github上搭建个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -431,8 +376,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

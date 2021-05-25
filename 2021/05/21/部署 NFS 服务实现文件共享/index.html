@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>部署 NFS 服务实现文件共享 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/05/20/%E5%AE%89%E8%A3%85%20git/index.html">
+  <meta name="description" content="当前实例客户端与服务器配置在同一网段，服务器：192.168.1.1，客户端：192.168.1.2  1、NFS 服务端的安装与配置1.1  安装服务安装 NFS 服务的相关软件包（默认已安装）执行指令 yum -y install nfs-utils rpcbind 1.2 创建文件及目录创建共享目录及相应的测试文件→将共享目录（如:&#x2F;usr&#x2F;share&#x2F;nfsfile）的所有者修改为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署 NFS 服务实现文件共享">
+<meta property="og:url" content="http://example.com/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="当前实例客户端与服务器配置在同一网段，服务器：192.168.1.1，客户端：192.168.1.2  1、NFS 服务端的安装与配置1.1  安装服务安装 NFS 服务的相关软件包（默认已安装）执行指令 yum -y install nfs-utils rpcbind 1.2 创建文件及目录创建共享目录及相应的测试文件→将共享目录（如:&#x2F;usr&#x2F;share&#x2F;nfsfile）的所有者修改为">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-20T09:47:22.880Z">
-<meta property="article:modified_time" content="2021-05-20T09:47:22.880Z">
+<meta property="og:image" content="http://example.com/2021/05/21/img/nfs1.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/nfs2.jpg">
+<meta property="article:published_time" content="2021-05-21T11:53:40.575Z">
+<meta property="article:modified_time" content="2021-05-24T09:13:58.226Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/21/img/nfs1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -152,12 +157,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-安装 git" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-部署 NFS 服务实现文件共享" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      部署 NFS 服务实现文件共享
+    </h1>
+  
+
+        
+        <a href="/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
+  	<time datetime="2021-05-21T11:53:40.575Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <br/>
+
+<blockquote>
+<p> 当前实例客户端与服务器配置在同一网段，服务器：192.168.1.1，客户端：192.168.1.2</p>
+</blockquote>
+<h2 id="1、NFS-服务端的安装与配置"><a href="#1、NFS-服务端的安装与配置" class="headerlink" title="1、NFS 服务端的安装与配置"></a>1、NFS 服务端的安装与配置</h2><h3 id="1-1-安装服务"><a href="#1-1-安装服务" class="headerlink" title="1.1  安装服务"></a>1.1  安装服务</h3><p><strong>安装 NFS 服务的相关软件包（默认已安装）</strong><br>执行指令 <code>yum -y install nfs-utils rpcbind</code></p>
+<h3 id="1-2-创建文件及目录"><a href="#1-2-创建文件及目录" class="headerlink" title="1.2 创建文件及目录"></a>1.2 创建文件及目录</h3><p><strong>创建共享目录及相应的测试文件→将共享目录（如:/usr/share/nfsfile）的所有者修改为 nfsnobody，以便 nfsnobody 用户能够对该共享目录有写权限</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] mkdir /usr/share/nfsfile/</span><br><span class="line">[root@localhost ~] <span class="built_in">echo</span> <span class="string">&quot;welcome 192.168.1.1 test.com&quot;</span> &gt; /usr/share/nfsfile/readme.txt</span><br><span class="line">[root@localhost ~] ls -l | grep nfsfile</span><br><span class="line">[root@localhost ~] ls -l /usr/share | grep nfsfile</span><br><span class="line">drwxr-xr-x.    2 root root     6 5月  10 13:43 nfsfile</span><br><span class="line">[root@localhost ~] chown nfsnobody /usr/share/nfsfile/</span><br><span class="line">[root@localhost ~] ls -l /usr/share | grep nfsfile</span><br><span class="line">drwxr-xr-x.    2 nfsnobody root    24 5月  24 08:38 nfsfile</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-编辑配置文件"><a href="#1-3-编辑配置文件" class="headerlink" title="1.3 编辑配置文件"></a>1.3 编辑配置文件</h3><p><strong>编辑、加载、查看NFS服务的配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] <span class="built_in">echo</span> <span class="string">&quot;/usr/share/nfsfile 192.168.1.0/24(rw,sync,root_squash)&quot;</span> &gt; /etc/exports</span><br><span class="line">[root@localhost ~] exportfs -r        // 重新加载配置文件,使新配置生效</span><br><span class="line">[root@localhost ~] exportfs -v        // 查看配置结果</span><br><span class="line">/usr/share/nfsfile	192.168.1.0/24(sync,wdelay,hide,no_subtree_check,sec=sys,rw,root_squash,no_all_squash)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在exports文件中定义NFS系统的输出目录（即共享目录）、 访问权限和允许访问的主机等参数，格式如下：</p>
+</blockquote>
+<ul>
+<li>配置行格式：被共享目录的绝对路径 客户端1(权限参数) 客户端2(权限参数) …… </li>
+</ul>
+<p><strong>格式说明:</strong><br>① 同一共享目录的客户端(权限参数)可以有多个(以空格隔开);<br>② “客户端”的指定方式有以下几种:<br>　客户端的IP地址：如，192.168.0.100。<br>　客户端的IP网段：如，192.168.1.0/24或192.168.1.0/255.255.255.0。<br>　可解析的主机名/完全合格域名：如，nfs.xyz.com、localhost等(指定的 主机名或域名必须在/etc/hosts文件或DNS服务器中能解析出IP地址)。<br>　可解析的特定子域中的所有主机:如，* .xyz.com、server[1-30].xyz.com。<br>　所有主机：*<br>③<font color='red'>“权限参数”必须用英文的圆括号括起,且与前面的客户端”符号不能留空</font>;圆括号内的“权限参数”可以有多个,前后两个用英文逗号隔开。 </p>
+<p><img src="../img/nfs1.png" alt="1621817943456"></p>
+<h3 id="1-4-启动NFS服务"><a href="#1-4-启动NFS服务" class="headerlink" title="1.4  启动NFS服务"></a>1.4  启动NFS服务</h3><p><strong>启动NFS服务并设置开机自动启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] systemctl start nfs-server.service</span><br><span class="line">[root@localhost ~] systemctl <span class="built_in">enable</span> nfs-server.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/nfs-server.service to /usr/lib/systemd/system/nfs-server.service.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-5-开放防火墙"><a href="#1-5-开放防火墙" class="headerlink" title="1.5  开放防火墙"></a>1.5  开放防火墙</h3><p><strong>开放防火墙的 nfs、rpc-bind、mountd 流量,允许外 部主机访问</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] firewall-cmd --permanent --add-service=nfs</span><br><span class="line">success</span><br><span class="line">[root@localhost ~] firewall-cmd --permanent --add-service=rpc-bind</span><br><span class="line">success</span><br><span class="line">[root@localhost ~] firewall-cmd --permanent --add-service=mountd</span><br><span class="line">success</span><br><span class="line">[root@localhost ~] firewall-cmd --reload</span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、使用-Linux-客户端访问NFS服务器的共享文件"><a href="#2、使用-Linux-客户端访问NFS服务器的共享文件" class="headerlink" title="2、使用 Linux 客户端访问NFS服务器的共享文件"></a>2、使用 Linux 客户端访问NFS服务器的共享文件</h2><h3 id="2-1-安装软件包"><a href="#2-1-安装软件包" class="headerlink" title="2.1  安装软件包"></a>2.1  安装软件包</h3><p><strong>确保 Linux 系统的 NFS 客户端已安装 <code>rpcbind</code> 软件包，并启动了其服务（RHEL7中已默认安装并启动，客户端不需要启动 nfs 服务）。</strong></p>
+<h3 id="2-2-查看共享目录"><a href="#2-2-查看共享目录" class="headerlink" title="2.2  查看共享目录"></a>2.2  查看共享目录</h3><p><strong>在 NFS 客户端使用 showmount 命令查看NFS服务器中导出的共享目录</strong><br>命令格式：<code>showmount [参数] [NFS服务器的地址]</code><br>常用参数有：<br>　-e——查询/显示NFS服务器中可用的共享目录。<br>　-a——查询/显示NFS服务器上的共享目录和所有连接客户端的信息。<br>　-d——只显示被本机挂载的共享目录的信息。<br>　 -v——显示showmount命令程序的版本号。 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@client ~] showmount -e 192.168.1.1</span><br><span class="line">Export list <span class="keyword">for</span> 192.168.1.1:</span><br><span class="line">/usr/share/nfsfile 192.168.1.0/24</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-临时挂载共享目录"><a href="#2-3-临时挂载共享目录" class="headerlink" title="2.3  临时挂载共享目录"></a>2.3  临时挂载共享目录</h3><p><strong>在 NFS 客户端创建挂载点目录→将服务器端的共享目录临时挂载到本地的挂载点目录→挂载成功后，访问共享目录内的文件（如查看挂载点目录内 readme 文件的内容）。</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@client ~] mkdir /nfsfile</span><br><span class="line">[root@client ~] mount -t nfs 192.168.1.1:/usr/share/nfsfile/ /nfsfile/</span><br><span class="line">[root@client ~] cat /nfsfile/readme.txt </span><br><span class="line">welcome 192.168.1.1 test.com</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-开机自动挂载共享资源"><a href="#2-4-开机自动挂载共享资源" class="headerlink" title="2.4  开机自动挂载共享资源"></a>2.4  开机自动挂载共享资源</h3><p><strong>若客户端希望开机时自动将 NFS 服务器端的共享资源挂载到本地主机，则可以在客户端的 /etc/fstab 文件的末尾添加挂载信息→验证对共享资源地读、写访问。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@client ~] <span class="built_in">echo</span> <span class="string">&quot;192.168.1.1:/usr/share/nfsfile /nfsfile nfs defaults 0 0&quot;</span> &gt; /etc/fstab                                   // 编辑自动挂载文件</span><br><span class="line">[root@client ~] umount /nfsfile             // 从挂载点卸载共享目录</span><br><span class="line">[root@client ~] mount -a                    // 使文件/etc/fstab中设置的所有挂载设备立即生效</span><br><span class="line">[root@client ~] touch /nfsfile/test2        // 验证挂载到/nfsfile/下的共享资源是否可写</span><br><span class="line">[root@client ~] ls -l /nfsfile/test2        // 验证挂载到/nfsfile/下的共享资源是否可读</span><br><span class="line">-rw-r--r--. 1 nfsnobody nfsnobody 0 12月 17 20:50 /nfsfile/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3、使用-Windows-客户端访问-NFS-服务器中的共享文件"><a href="#3、使用-Windows-客户端访问-NFS-服务器中的共享文件" class="headerlink" title="3、使用 Windows 客户端访问 NFS 服务器中的共享文件"></a>3、使用 Windows 客户端访问 NFS 服务器中的共享文件</h2><p>由于目前使用笔记本是 ”家庭版本“ 没有 NFS 服务暂就没写步骤 ，后期会补上来的  &gt; _ &lt;</p>
+<p> <img src="../img/nfs2.jpg" alt="img"></p>
+
       
 
       
@@ -236,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/20/%E5%AE%89%E8%A3%85%20git/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/21/%E9%83%A8%E7%BD%B2%20NFS%20%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,9 +319,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/05/21/%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%85%89%E7%9B%98%20yum%20%E6%BA%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          建立本地光盘 yum 源
+        
+      </div>
+    </a>
   
-    <a href="/2021/05/18/%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用hexo框架在github搭建个人博客</div>
+  
+    <a href="/2021/05/21/Samba%20%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%8E%A7%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Samba 服务的安装与运行控制</div>
       <i class="icon-circle-right"></i>
     </a>
   
