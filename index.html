@@ -152,108 +152,12 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Win10下使用hexo框架在阿里云服务器上部署个人博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用Postfix与Dovecot收发电子邮件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Win10下使用hexo框架在github上搭建个人博客</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-05-21T12:07:32.794Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <br/>
-
-<h2 id="1-注册-github"><a href="#1-注册-github" class="headerlink" title="1.注册 github"></a>1.注册 github</h2><p>1.  进入 官网 <a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a> 点击 <strong>sign up</strong><br><img src="../img/github0.png" alt="github0"></p>
-<p>2. 填写账户信息<br><img src="../img/github00.png" alt="github00"></p>
-<p>3. 完成设置<br><img src="../img/github000.png" alt="github000"></p>
-<p>4. 进行邮箱验证，发送电子邮件<br><img src="../img/github01.png"><br>　打开接收到的 QQ 邮件，核实电子邮件地址<br><img src="../img/github02.png"><br>　核实成功，跳过。<br><img src="../img/github03.png"></p>
-<p>5. 注册成功。<br><img src="../img/github04.png"></p>
-<h2 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2. 安装环境"></a>2. 安装环境</h2><h3 id="2-1-安装-nodejs"><a href="#2-1-安装-nodejs" class="headerlink" title="2.1 安装 nodejs"></a>2.1 安装 nodejs</h3><p>1. 进入 官网 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载 <strong>nodejs</strong><br><img src="../img/nodejs0.png" alt="nodejs0"><br>2. 打开下载位置，双击 <strong>node—-.msi</strong> 进行安装<br><img src="../img/nodejs00.png" alt="nodejs00"></p>
-<p>3. 一直 Next<br>　选择自动安装一些工具<br><img src="../img/nodejs1.png" alt="nodejs1"></p>
-<p>　安装完成，弹出控制台<br><img src="../img/nodejs2.png" alt="nodejs2"><br>回车继续</p>
-<p>4. 使用 <code>windows + R</code>  输出 <code>cmd</code> 启动命令行<br>　使用命令 <code>node -v</code>  、<code>nmp -v</code>  查看版本信息<br><img src="../img/nodejs4.png" alt="nodejs3"><br>　如果失败则重启电脑再次输入</p>
-<p>5. 输入命令 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code> 安装淘宝的源 cnpm<br><img src="../img/cnpm1.png" alt="cnpm1"></p>
-<p>　输入命令 <code>cnpm -v</code> 查看安装信息<br><img src="../img/cnpm2.png" alt="cnpm2"></p>
-<h3 id="2-2-安装-hexo-框架"><a href="#2-2-安装-hexo-框架" class="headerlink" title="2.2 安装 hexo 框架"></a>2.2 安装 hexo 框架</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">windows 命令</span><br><span class="line">	创建目录                 md 目录</span><br><span class="line">	显示指定工作目录下的内容    chdir </span><br><span class="line">	</span><br><span class="line">hexo 语法</span><br><span class="line">    hexo new &quot;***&quot;    创建新的帖子</span><br><span class="line">    hexo clean        清楚缓存</span><br><span class="line">    hexo g            生成静态文件</span><br><span class="line">    hexo generate</span><br><span class="line">    hexo s            启动服务</span><br><span class="line">    hexo server</span><br><span class="line">    hexo d            部署到远程站点</span><br><span class="line">    hexo deploy</span><br></pre></td></tr></table></figure>
-
-
-
-<p>1. 输入命令 <code>cnpm install -g hexo-cli</code> 安装 hexo 框架<br><img src="../img/hexo1.png" alt="hexo1"></p>
-<p>2. 输入命令 <code>hexo -v</code> 查看版本信息<br><img src="../img/hexo2.png" alt="hexo2"></p>
-<h3 id="2-3-安装-git"><a href="#2-3-安装-git" class="headerlink" title="2.3 安装 git"></a>2.3 安装 git</h3><p>1. 进入官网 <a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a><br><img src="../img/git0.png"></p>
-<p>2. 下载<br><img src="../img/git1.png"></p>
-<p>3. 打开下载位置，双击 <strong>Git—-bit.exe</strong> 进行安装<br><img src="../img/git2.png"></p>
-<p>4. 安装 <strong>Git</strong> 工具</p>
-<p>　1.  以下安装步骤均为默认选项，不爱折腾的伙伴们可以直接 Next 到 Finsh 完成安装。<br>　<img src="../img/git3.png" alt="1621504212582"></p>
-<p>　2.  点击 Next , 选择组件<br>　<img src="../img/git4.png"></p>
-<p>　3.  点击 Next，选择默认编辑器<br>　<img src="../img/git5.png"></p>
-<p>　4.  点击 Next，设置分支名称<br>　<img src="../img/git6.png"></p>
-<p>　5.  点击 Next，配置 PATH 环境<br>　<img src="../img/git7.png"></p>
-<p>　6.  点击 Next，选择 HTTPS 传输后端<br>　<img src="../img/git8.png"><br>　<br>　7.  点击 Next，配置行结束转换<br>　<img src="../img/git10.png"></p>
-<p>　8.  点击 Next，配置终端模拟器与 Git Bash 一起使用<br>　<img src="../img/git9.png"></p>
-<p>　9.  点击 Next，配置 Git 默认行为<br>　<img src="../img/git11.png"></p>
-<p>　10.   点击 Next，选择凭据助手<br>　<img src="../img/git12.png"></p>
-<p>　11.   点击 Next，配置额外选项<br>　<img src="../img/git13.png"></p>
-<p>　12. 点击 Install 安装</p>
-<p>5. 打开 <strong>Git Bash</strong><br>　在任意目录下鼠标右键即可看到有 <strong>Git GUI Here</strong> 与 <strong>Git Bash Here</strong> 两个选项。<br><img src="../img/git14.png"></p>
-<p>　点击 <strong>Git Bash Here</strong> 弹出命令行窗口，说明安装成功<br><img src="../img/git15.png"></p>
-<h2 id="3-配置环境"><a href="#3-配置环境" class="headerlink" title="3. 配置环境"></a>3. 配置环境</h2><p>1. 创建目录 blog <code>md 目录</code><br><img src="../img/hexo3.png"></p>
-<p>2. 执行命令 <code>hexo init</code> 会在当前目录下生成 hexo 项目 </p>
-<p>　生成时卡住输入回车键即可解决</p>
-<p>　出现  <font color='green'><code>INFO </code></font><code>Start blogging with Hexo!</code> 代表生成成功 </p>
-<p>　<img src="../img/hexo4.png" alt="hexo4"></p>
-<p>3. 执行命令 <code>hexo s</code> 或 <code>hexo server</code> 开启 hexo 服务<br><img src="../img/hexo5.png" alt="hexo5"></p>
-<p>　使用路径 <code> localhost:4000</code> 即可访问<br>　<img src="../img/hexo6.png" alt="hexo6"></p>
-<p>　执行命令 <code>ctrl + c</code> 关闭服务即可退出<br>　<img src="../img/hexo7.png" alt="hexo7"></p>
-<p>4. 在 github 中新建一个仓库<br><img src="../img/github1.png" alt="github1"></p>
-<p>　输入仓库名必须为 <font color='red'>用户名.github.io</font><br>　<img src="../img/github2.png" alt="github2"><br>　点击 create repository 创建仓库</p>
-<p>　把生成的路径复制下来后续配置文件中要用<br>　<img src="../img/github3.png" alt="github3"></p>
-<p>​       </p>
-<p>5. 安装插件 <code>cnpm install --save hexo-deployer-git</code><br><img src="../img/hexo8.png" alt="hexo8"></p>
-<p>​       </p>
-<p>6. 使用记事本打开 hexo 项目目录下的配置文件 <code>_config.yml</code> </p>
-<p>　修改配置文件中 deploy 项
-　</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: &#x27;git&#x27;</span><br><span class="line">repo: https://github.com/ccy-blog/ccy-blog.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>repo: 后面为创建 github 仓库时生成的路径</p>
-<p>7. 设置 用户名 和 邮件<br>　<code>git config --global user.email &quot;邮箱&quot;</code><br>　<code>git config --global user.name &quot;用户名&quot;</code></p>
-<p>　<img src="../img/hexo9.png"></p>
-<h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4. 运行"></a>4. 运行</h2><p>1. 使用 <code>hexo clean</code> 清楚缓存<br><img src="../img/hexo10.png"></p>
-<p>2. 使用 <code>hexo g</code> 或 <code>hexo generate</code> 生成静态文件<br><img src="../img/hexo11.png"></p>
-<p>3. 使用 <code>hexo d</code> 或 <code>hexo deploy</code> 部署到远程站点<br><img src="../img/hexo12.png"></p>
-<p>　1. <strong>出现错误：</strong> <font color=red>fatal: unable to access “xxx‘‘: OpenSSL SSL_read:Connection was reset, errno 10054</font></p>
-<p>　　使用 <code>git config --global http.sslVerify &quot;false&quot;</code>  解决</p>
-<p>　　产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
-<p>　　解决办法：解除ssl验证</p>
-<p>　2. <strong>出现错误：</strong> <font color=red>Failed to connect to github.com port 443: Timed out</font></p>
-<p>　　网络问题，等会儿再上传，因为 github 是外网。</p>
-<p>4. 使用路径 <code>用户名.github.io</code> 即可访问自己的博客 </p>
-<p><img src="../img/hexo13.png" alt="1621566839396"></p>
-<h2 id="5-更换博客主题"><a href="#5-更换博客主题" class="headerlink" title="5. 更换博客主题"></a>5. 更换博客主题</h2><ul>
-<li>找到自己喜欢的主题，下载下来放到 hexo 项目的 <code>themes/</code> 目录下</li>
-</ul>
-<blockquote>
-<p>我临时使用的 <code>https://github.com/litten/hexo-theme-yilia</code> 这个主题</p>
-</blockquote>
-<p>　在目录 <code>themes/</code> 下右键鼠标打开 Git Bash 输入指令 <code>git clone 地址</code> 回车进行下载<img src="../img/hexo15.png" alt="1621570232717"><br>　<br>　下载完成后在该目录下复制主题名</p>
-<p>　<img src="../img/hexo14.png" alt="1621567563793"></p>
-<ul>
-<li>修改 <code>_config.yml</code> 配置文件内容</li>
-</ul>
-<p>　记事本打 <code>_config.yml</code> 配置文件，修改 <code>theme:landscape</code> 为 <code>theme: yilia</code></p>
-<p>　清楚缓存 <code>hexo clean</code> 从新部署 <code>hexo d</code> 即可生效</p>
-
+        
       
 
       
@@ -265,7 +169,165 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/21/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/05/27/%E4%BD%BF%E7%94%A8Postfix%E4%B8%8EDovecot%E6%94%B6%E5%8F%91%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用vsftpd传输文件资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/27/%E4%BD%BF%E7%94%A8vsftpd%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用MariaDB管理数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/27/%E4%BD%BF%E7%94%A8MariaDB%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用Apache部署Web网站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/27/%E4%BD%BF%E7%94%A8Apache%E9%83%A8%E7%BD%B2Web%E7%BD%91%E7%AB%99/">使用 Apache 部署 Web 网站</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/27/%E4%BD%BF%E7%94%A8Apache%E9%83%A8%E7%BD%B2Web%E7%BD%91%E7%AB%99/" class="archive-article-date">
+  	<time datetime="2021-05-27T13:00:01.536Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/27/%E4%BD%BF%E7%94%A8Apache%E9%83%A8%E7%BD%B2Web%E7%BD%91%E7%AB%99/">展开全文 >></a>
         </p>
       
 
@@ -540,17 +602,13 @@
 </ul>
 <h3 id="2-安装-Samba-服务器"><a href="#2-安装-Samba-服务器" class="headerlink" title="2.安装 Samba 服务器"></a>2.安装 Samba 服务器</h3><p>执行命令 <code>yum -y install samba samba-common</code></p>
 <h3 id="3-Samba-服务器运行管理"><a href="#3-Samba-服务器运行管理" class="headerlink" title="3. Samba 服务器运行管理"></a>3. Samba 服务器运行管理</h3><ul>
-<li><p>smb 和 nmb 服务的启动、停止、重启、重新加载和状态查询 </p>
-<p>　<code>systemctl start|stop|restart|reload|status smb.service nmb.service</code> </p>
+<li><p>smb 和 nmb 服务的启动、停止、重启、重新加载和状态查询<br>　<code>systemctl start|stop|restart|reload|status smb.service nmb.service</code> </p>
 </li>
-<li><p>开机自动启动或不启动 smb 和 nmb 服务</p>
-<p>　<code>systemctl enable|disable smb.service nmb.service</code></p>
+<li><p>开机自动启动或不启动 smb 和 nmb 服务<br>　<code>systemctl enable|disable smb.service nmb.service</code></p>
 </li>
-<li><p>查看 smb 和 nmb 服务启动后对应的进程及状态 </p>
-<p>　<code>ps -ef | egrep &quot;smb|nmb&quot;</code></p>
+<li><p>查看 smb 和 nmb 服务启动后对应的进程及状态<br>　<code>ps -ef | egrep &quot;smb|nmb&quot;</code></p>
 </li>
-<li><p>查看 smb 和 nmb 服务运行中监听的端口，进而了解服务方与客户方连接的对象 </p>
-<p>  　<code>ss -nutap | egrep &quot;smbd|nmbd&quot; </code></p>
+<li><p>查看 smb 和 nmb 服务运行中监听的端口，进而了解服务方与客户方连接的对象<br>  　<code>ss -nutap | egrep &quot;smbd|nmbd&quot; </code></p>
 </li>
 </ul>
 <h2 id="二、可匿名访问的共享目录"><a href="#二、可匿名访问的共享目录" class="headerlink" title="二、可匿名访问的共享目录"></a>二、可匿名访问的共享目录</h2><blockquote>
@@ -566,17 +624,15 @@
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">………………//省略若干行</span><br><span class="line"></span><br><span class="line">[global]</span><br><span class="line">    workgroup = WORKGROUP                   // 修改为与Windows主机相同的工作组名（此电脑-&gt;属性）     security = user                         // 身份验证方式</span><br><span class="line">    map to guest = Bad User                 // 添加此行, 开启匿名访问</span><br><span class="line">    hosts allow = 192.168.1. except 192.168.1.222    // 允许访问与不许访问的IP地址</span><br><span class="line"></span><br><span class="line">………………//省略若干行</span><br><span class="line"></span><br><span class="line">// 在文件末尾添加以下各行</span><br><span class="line"></span><br><span class="line">[public<span class="built_in">_</span>doc]                   // 设置共享目录的共享名为public<span class="built_in">_</span>doc</span><br><span class="line">    comment = Public Stuff     // Windows的网络中看到的共享目录的备注栏信息</span><br><span class="line">    path = /usr/share/public   // 设置共享目录的绝对路径</span><br><span class="line">    guest ok = yes             // 设置允许匿名访问</span><br><span class="line">    browseable = yes           // 设置共享目录可见</span><br><span class="line">    writable = yes             // 设置共享目录可以读写</span><br><span class="line">    printable = no             // 设置用户不可以打印    </span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>使用 <code>testparm</code> 命令测试配置文件中的语法是否正确，  若显示 “Loaded services file OK.” 信息表示配置文件的语法是正确的，  再按【Enter】键，会显示主配置文件当前有效的 配置清单 </p>
-</li>
-<li><p> 使用 <code>testparm –v</code> 命令可以详细的列出 smb.conf 支持的所有的配置参数（包括所有明确配置和未明确配置 而使用缺省值的参数）。</p>
-</li>
+<li>使用 <code>testparm</code> 命令测试配置文件中的语法是否正确，  若显示 “Loaded services file OK.” 信息表示配置文件的语法是正确的，再按【Enter】键，会显示主配置文件当前有效的 配置清单 </li>
+<li> 使用 <code>testparm –v</code> 命令可以详细的列出 smb.conf 支持的所有的配置参数（包括所有明确配置和未明确配置 而使用缺省值的参数）。</li>
 </ul>
 <h3 id="3-开机自动启动"><a href="#3-开机自动启动" class="headerlink" title="3. 开机自动启动"></a>3. 开机自动启动</h3><p><strong>重新启动SMB使配置生效,并设置开机自动启动</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment">## systemctl restart smb nmb</span></span><br><span class="line">[root@localhost ~]<span class="comment">## systemctl enable smb nmb</span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/smb.service to /usr/lib/systemd/system/smb.service.</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/nmb.service to /usr/lib/systemd/system/nmb.service.</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="4-关防火墙"><a href="#4-关防火墙" class="headerlink" title="4. 关防火墙"></a>4. 关防火墙</h3><p>**开启防火墙的samba服务,允许Samba流量通过(修改为关防火墙) **</p>
+<h3 id="4-关防火墙"><a href="#4-关防火墙" class="headerlink" title="4. 关防火墙"></a>4. 关防火墙</h3><p><strong>开启防火墙的samba服务,允许Samba流量通过（修改为关防火墙）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment">## systemctl stop firewalld</span></span><br><span class="line">[root@localhost ~]<span class="comment">## firewall-cmd --state</span></span><br><span class="line">not running</span><br></pre></td></tr></table></figure>
 
 
@@ -585,7 +641,7 @@
 
 
 
-<h3 id="6-在服务器端编辑配置文件"><a href="#6-在服务器端编辑配置文件" class="headerlink" title="6.  在服务器端编辑配置文件"></a>6.  在服务器端编辑配置文件</h3><p><strong>在服务器端编辑 /etc/hosts 文件，添加本地主机名解析记录，其中的主机名要与 /etc/hostname 文件中的主机名保持一致（本步骤非必作,只 是有些客户系统需要作,作了以后能加快访问速度）</strong></p>
+<h3 id="6-在服务器端编辑配置文件"><a href="#6-在服务器端编辑配置文件" class="headerlink" title="6.  在服务器端编辑配置文件"></a>6.  在服务器端编辑配置文件</h3><p><strong>在服务器端编辑 /etc/hosts 文件，添加本地主机名解析记录，其中的主机名要与 /etc/hostname 文件中的主机名保持一致（本步骤非必作，只是有些客户系统需要作，作了以后能加快访问速度）</strong></p>
 <h3 id="7-windows-客户端的访问测试"><a href="#7-windows-客户端的访问测试" class="headerlink" title="7. windows 客户端的访问测试"></a>7. windows 客户端的访问测试</h3><p>快捷键 <code>win+R</code> 输入 <code>\\192.168.1.2</code><br><img src="../img/samba1.png" alt="1621920124729"></p>
 <h3 id="8-Linux-客户端的访问测试"><a href="#8-Linux-客户端的访问测试" class="headerlink" title="8. Linux 客户端的访问测试"></a>8. Linux 客户端的访问测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># yum -y install cifs-utils                      // 安装cifs-utils软件包</span></span><br><span class="line">[root@localhost ~]<span class="comment"># mkdir /smbdata                                 // 创建挂载点目录 </span></span><br><span class="line">// 将匿名用户访问的共享目录临时挂载到客户端的/smbdata目录下</span><br><span class="line">[root@localhost ~]<span class="comment"># mount -o guest //192.168.1.2/public_doc /smbdata</span></span><br><span class="line">[root@localhost ~]<span class="comment"># ls -l /smbdata		                      // 说明匿名用户对共享目录可读</span></span><br><span class="line">-rwxr-xr-x. 1 root root 0 5月  24 17:35 file1.tar</span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;hello word&quot; &gt; /smbdata/file2.txt    // 说明匿名用户对共享目录可写</span></span><br></pre></td></tr></table></figure>
 
@@ -598,11 +654,11 @@
 
 <h2 id="三、带用户认证共享目录"><a href="#三、带用户认证共享目录" class="headerlink" title="三、带用户认证共享目录"></a>三、带用户认证共享目录</h2><blockquote>
 <p>当前实例：服务器端 IP 地址：192.168.1.2，</p>
-<p>共享目录                    共享名        组账号名       用户账号及权限</p>
-<p>/usr/share/Asmb        A_doc        Azu                ABuser：读写执行，Auser：读<br>/usr/share/Bsmb        B_doc        Bzu                ABuser：读写执行，Buser：读</p>
+<p>共享目录　　　　　共享名　　组账号名　　用户账号及权限</p>
+<p>/usr/share/Asmb　　A_doc　　Azu　　　　ABuser：读写执行，Auser：读<br>/usr/share/Bsmb　　B_doc　　Bzu　　　　ABuser：读写执行，Buser：读</p>
 </blockquote>
 <h3 id="1-创建组与账号"><a href="#1-创建组与账号" class="headerlink" title="1. 创建组与账号"></a>1. 创建组与账号</h3><p><strong>创建 Linux 系统的组账号→创建无家目录、归属相应组且不可登录的用户账号。</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># groupadd -r Azu</span></span><br><span class="line">[root@localhost ~]<span class="comment"># groupadd -r Bzu</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Azu -s /sbin/nologin Auser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Bzu -s /sbin/nologin Buser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Azu,Bzu,root -s /sbin/nologin ABuser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># id ABuser</span></span><br><span class="line">uid=1005(ABuser) gid=1005(ABuser) 组=1005(ABuser),0(root),981(Azu),980(Bzu)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># groupadd -r Azu</span></span><br><span class="line">[root@localhost ~]<span class="comment"># groupadd -r Bzu</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Azu -s /sbin/nologin Auser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Bzu -s /sbin/nologin Buser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># useradd -M -G Azu,Bzu -s /sbin/nologin ABuser</span></span><br><span class="line">[root@localhost ~]<span class="comment"># id ABuser</span></span><br><span class="line">uid=1005(ABuser) gid=1005(ABuser) 组=1005(ABuser),981(Azu),980(Bzu)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -672,19 +728,19 @@
 
 
   
-    <article id="post-DHCP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-DHCP 服务器的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/21/DHCP/">DHCP</a>
+      <a class="article-title" href="/2021/05/21/DHCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA/">DHCP 服务器的搭建</a>
     </h1>
   
 
         
-        <a href="/2021/05/21/DHCP/" class="archive-article-date">
+        <a href="/2021/05/21/DHCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA/" class="archive-article-date">
   	<time datetime="2021-05-21T11:52:43.807Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
 </a>
         
@@ -692,7 +748,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <br/>
+
+<h2 id="一、DHCP-服务"><a href="#一、DHCP-服务" class="headerlink" title="一、DHCP 服务"></a>一、DHCP 服务</h2><ul>
+<li><strong>DHCP（Dynamic Host Configuration Protocal）就是动态主机配置协议，可以自动配置主机的 lP 地址、子网掩码、网关及 DNS 等 TCP/IP 信息。所以 DHCP 可以有效地降低客户端 IP 地址配置的复杂度和网络的管理成本。如果路由器能够转发 DHCP 请求，只需要在一个子网中配置 DHCP 服务器就可以向其他子网提供 TCP/IP 配置的服务支持 DHCP 的应用环境</strong></li>
+</ul>
+<h3 id="1-DHCP-软件包"><a href="#1-DHCP-软件包" class="headerlink" title="1. DHCP 软件包"></a>1. DHCP 软件包</h3><ul>
+<li><p>dhcp-4.2.5-47.el7.x86_64.rpm<br>　DHCP 主程序包，包括 DHCP 服务和中继代理程序，安装该软件包进行相应配置，即可以为客户机动态分配IP地址及其他 TCP/IP 信息。</p>
+</li>
+<li><p>dhclient-4.2.5-47.el7.x86_64.rpm<br>　客户端软件包（已安装）</p>
+</li>
+<li><p>dhcp-common-4.2.5-47.el7.x86_64.rpm<br>　DHCP 服务器开发工具软件包，为 DHCP 开发提供库文件支持。</p>
+</li>
+</ul>
+<h3 id="2-DHCP-服务器的安装与运行管理"><a href="#2-DHCP-服务器的安装与运行管理" class="headerlink" title="2. DHCP 服务器的安装与运行管理"></a>2. DHCP 服务器的安装与运行管理</h3><ul>
+<li><p>DHCP 服务的安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mount /dev/cdrom /mnt </span></span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -ivh /mnt/Packages/dhcp-4.2.5-47.el7.x86_64.rpm</span></span><br></pre></td></tr></table></figure></li>
+<li><p>启动、重启、查询服务的启动状态、停止<br>  　<code>systemctl start|stop|restart|reload|status dhcpd .service</code></p>
+</li>
+<li><p>DHCP 服务在系统开机时自动启动或不启动的命令格式如下：<br>　<code>systemctl enable|disable dhcpd</code></p>
+</li>
+<li><p>检查dhcpd进程<br>　<code>ps -ef | grep dhcpd</code></p>
+</li>
+<li><p>查看dhcpd运行的端口<br>　<code>ss -nutap | grep dhcpd</code></p>
+</li>
+</ul>
+<h2 id="二、配置单子网的DHCP服务"><a href="#二、配置单子网的DHCP服务" class="headerlink" title="二、配置单子网的DHCP服务"></a>二、配置单子网的DHCP服务</h2><blockquote>
+<p>动态分配的 IP 地址的范围为 192.168.1.20～192.168.1.100<br>子网掩码为 255.255.255.0<br>默认网关为 192.168.1.254<br>客户端使用的 DNS 服务器的 IP 地址为 8.8.8.8<br>所在的域名为 xyz.edu,<br>并为其中的一台客户机保留 192.168.1.64 地址</p>
+</blockquote>
+<h3 id="1-配置DHCP自身的网络参数"><a href="#1-配置DHCP自身的网络参数" class="headerlink" title="1. 配置DHCP自身的网络参数"></a>1. 配置DHCP自身的网络参数</h3><p>添加网络<br><img src="../img/dhcp0.png" alt="1621988717997"></p>
+<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="../img/dhcp01.png" alt="1621989008068"></p>
+<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="../img/dhcp1.png" alt="1621952959542"><br><img src="../img/dhcp2.png" alt="1621953070703"></p>
+<h3 id="2-修改服务器的主配置文件"><a href="#2-修改服务器的主配置文件" class="headerlink" title="2. 修改服务器的主配置文件"></a>2. 修改服务器的主配置文件</h3><p><strong>修改 DHCP 服务器的主配置文件 /etc/dhcp/dhcpd.conf →启动 DHCP 服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cp -p /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example /etc/dhcp/dhcpd.conf </span></span><br><span class="line">[root@localhost ~]<span class="comment"># vim /etc/dhcp/dhcpd.conf </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ddns-update-style interim;</span><br><span class="line">ignore |allow client-updates;</span><br><span class="line">option domain-name    &quot;xyz.edu&quot;;</span><br><span class="line">option domain-name-servers   8.8.8.8;</span><br><span class="line">default-lease-time 600;</span><br><span class="line">max-lease-time 7200;</span><br><span class="line">subnet 192.168.1.0 netmask 255.255.255.0&#123;</span><br><span class="line">    range 192.168.1.20 192.168.1.100;</span><br><span class="line">    option routers 192.168.1.254;</span><br><span class="line">&#125;</span><br><span class="line">host teacher &#123;</span><br><span class="line">    hardware ethernet 00:0C:29:B8:2E:2A;        // 保留的网卡物理地址</span><br><span class="line">    fixed-address 192.168.1.64;                  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># systemctl restart dhcpd.service</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl enable dhcpd.service</span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/dhcpd.service to /usr/lib/systemd/system/dhcpd.service.</span><br><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --permanent --add-service=dhcp</span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-Linux客户端测试"><a href="#3-Linux客户端测试" class="headerlink" title="3. Linux客户端测试"></a>3. Linux客户端测试</h3><p><strong>Linux 客户端配置与测试。编辑客户端的网卡配置文件，将网卡获取 IP 地址的方式改为 dhcp →重启网络服务→查看客户端是否获取了 IP 地址等网络参数</strong></p>
+<ul>
+<li>应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4，设置 <strong>IPv4 Method</strong> 为<strong>自动（DHCP）</strong>，<strong>关闭再打开有线连接</strong>，再查看<strong>有线-&gt;设置</strong>。<br><img src="../img/dhcp3.png" alt="1621987902942"></li>
+</ul>
+<h3 id="4-查看租用情况"><a href="#4-查看租用情况" class="headerlink" title="4. 查看租用情况"></a>4. 查看租用情况</h3><p><strong>在服务器端使用 cat 命令查看租约文件 dhcpd.leases，了解租用情况</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cat /var/lib/dhcpd/dhcpd.leases</span></span><br><span class="line"><span class="comment"># The format of this file is documented in the dhcpd.leases(5) manual page.</span></span><br><span class="line"><span class="comment"># This lease file was written by isc-dhcp-4.2.5</span></span><br><span class="line"></span><br><span class="line">server-duid <span class="string">&quot;\000\001\000\001(?\301U\000\014)\270.*&quot;</span>;</span><br><span class="line"></span><br><span class="line">lease 192.168.1.20 &#123;</span><br><span class="line">  starts 2 2021/05/25 14:14:52;</span><br><span class="line">  ends 2 2021/05/25 14:24:52;</span><br><span class="line">  cltt 2 2021/05/25 14:14:52;</span><br><span class="line">  binding state active;</span><br><span class="line">  next binding state free;</span><br><span class="line">  rewind binding state free;</span><br><span class="line">  hardware ethernet 00:0c:29:e9:4b:6c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-Windows-用户客户端"><a href="#5-Windows-用户客户端" class="headerlink" title="5. Windows 用户客户端"></a>5. Windows 用户客户端</h3><p><code>win + R</code> 输入 <code>cmd</code> ，执行指令：<br>释放 IP 地址：<code>ipconfig /release</code><br>重新申请 IP 地址：<code>ipconfig /renew</code><br>执行：<code>ipconfig /all</code></p>
+<p><img src="../img/dhcp4.png" alt="1621989409748"></p>
+<h2 id="三、使用-DHCP-中继代理为多子网分配-IP-地址"><a href="#三、使用-DHCP-中继代理为多子网分配-IP-地址" class="headerlink" title="三、使用 DHCP 中继代理为多子网分配 IP 地址"></a>三、使用 DHCP 中继代理为多子网分配 IP 地址</h2><p>由于 DHCP 客户端与 DHCP 服务器之间是通过广播包的通信方式，来寻找对方并获得 IP 地址等网络参数的，当服务器和客户端处在不同网段时，必须通过路由器或具有路由功能的三层交换机实现连接，但广播包是不能直接穿过路由器或三层交换机的（即路由器/三层交换机不能转发广播包）。因此，当 DHCP 客户端与 DHCP 服务器之间有路由器时，无法完成IP地址的申请和获取。其解决问题的方法有以下三种:</p>
+<ul>
+<li>在每个子网中分别部署一台 DHCP 服务器，让服务器为各自的子网中的客户端分配 IP 地址等网络参数。此方法管理分散且投入成本较大，在实际中很少采用。</li>
+<li>在网络中部署一台 DHCP 服务器，在路由器的每个子网接口或三层交换机的每个 VLAN 端口启动 DHCP 中继代理功能。此方法在实际工作中被广泛使用。</li>
+<li>在网络中部署一台DHCP服务器，在每个子网的 Linux/Winddows Server 主机中部署一台 DHCP 中继代理服务器。此方法管理集中但投入成本较大，实际中很少采用。</li>
+</ul>
+<!--不过，以下还是以该方法为例，介绍使用 RHEL7 主机搭建 DHCP 中继代理的方法。-->
+
+
       
 
       
@@ -704,7 +819,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/21/DHCP/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/05/21/DHCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA/">展开全文 >></a>
         </p>
       
 
@@ -734,19 +849,19 @@
 
 
   
-    <article id="post-DNS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-DNS 服务器的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/21/DNS/">DNS</a>
+      <a class="article-title" href="/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/">DNS 服务器的配置</a>
     </h1>
   
 
         
-        <a href="/2021/05/21/DNS/" class="archive-article-date">
+        <a href="/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
   	<time datetime="2021-05-21T11:51:54.271Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
 </a>
         
@@ -754,7 +869,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <br/>
+
+<h2 id="一、DNS-服务"><a href="#一、DNS-服务" class="headerlink" title="一、DNS 服务"></a>一、DNS 服务</h2><p>解析：<a target="_blank" rel="noopener" href='https://baike.baidu.com/item/域名系统'>域名系统</a></p>
+<h3 id="1-Unbound-软件包"><a href="#1-Unbound-软件包" class="headerlink" title="1. Unbound 软件包"></a>1. Unbound 软件包</h3><ul>
+<li><p>unbound-1.4.20-28.el7.x86_64.rpm</p>
+<p>　DNS的主程序包。</p>
+</li>
+<li><p>unbound-libs-1.4.20-28.el7.x86_64</p>
+<p>　进行域名解析必备的库文件。 </p>
+</li>
+</ul>
+<h3 id="2-Unbound-服务器的安装与运行管理"><a href="#2-Unbound-服务器的安装与运行管理" class="headerlink" title="2. Unbound 服务器的安装与运行管理"></a>2. Unbound 服务器的安装与运行管理</h3><ul>
+<li><p>Unbound 服务的安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mount /dev/cdrom /mnt </span></span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br></pre></td></tr></table></figure></li>
+<li><p>启动、重启、查询服务的启动状态、停止<br>  　<code>systemctl start|stop|restart|reload|status unbound.service</code></p>
+</li>
+<li><p>Unbound 服务在系统开机时自动启动或不启动的命令格式如下：<br>　<code>systemctl enable|disable unbound.service</code></p>
+</li>
+<li><p>检查dhcpd进程<br>　<code>ps -ef | grep unbound</code></p>
+</li>
+<li><p>查看dhcpd运行的端口<br>　<code>ss -nutap | grep unbound</code></p>
+</li>
+</ul>
+<blockquote>
+<p>实例：搭建一台授权DNS服务器，该服务器能访问互联网中其他DNS服务器，能解析内网搭建的所有服务器的域名，并通过配置转发地址使内网的用户使用域名访问外网的服务器。</p>
+</blockquote>
+<p><img src="../img/dns1.png" alt="1622097501399"></p>
+<h2 id="二、授权-DNS-服务器的配置"><a href="#二、授权-DNS-服务器的配置" class="headerlink" title="二、授权 DNS 服务器的配置"></a>二、授权 DNS 服务器的配置</h2><h3 id="1-配置网络参数"><a href="#1-配置网络参数" class="headerlink" title="1.  配置网络参数"></a>1.  配置网络参数</h3><p>**以 root 用户身份登录 RHEL7 系统→配置 DNS 服务器网卡的 IP 地址为 192.168.8.1/24、主机名为dns1.xyz.edu **</p>
+<p>编辑-&gt;虚拟网络编辑器-&gt;更改设置-&gt;添加网络-&gt;添加网络-&gt;修改子网 IP</p>
+<p><img src="../img/dhcp0.png" alt="1621988717997"><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\1622099016595.png" alt="1622099016595"></p>
+<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="../img/dhcp01.png" alt="1621989008068"></p>
+<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="../img/dhcp1.png" alt="1621952959542"><br><img src="../img/dhcp2.png" alt="1621953070703"></p>
+<h3 id="2-安装软件包"><a href="#2-安装软件包" class="headerlink" title="2. 安装软件包"></a>2. 安装软件包</h3><p><strong>安装 Unbound 软件包→启动和开机自动启动 Unbound 服务。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># mount /dev/cdrom /mnt</span></span><br><span class="line">[root@dns1 ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound </span></span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl enable unbound </span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/unbound.service to /usr/lib/systemd/system/unbound.service.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-编辑配置文件"><a href="#3-编辑配置文件" class="headerlink" title="3. 编辑配置文件"></a>3. 编辑配置文件</h3><p><strong>使用 vim 编辑配置文件 unbound.conf，对服务器全局参数进行配置</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 配置区域的全局参数：使用</span><br><span class="line">interface: 192.168.8.1                   // 52行，设置监听的网络接口(默认监听localhost网络接口)</span><br><span class="line">access-control: 192.168.8.0/24 allow     // 203行，允许allow或拒绝refuse给哪些地址提供解析服务</span><br><span class="line">username: &quot;”                             // 295行，改成空字符串,表示任何用户均可访问</span><br><span class="line">domain-insecure: &quot;xyz.edu&quot;               // 504行，跳过验证域 “xyz.edu”，以避免信任链验证失败</span><br><span class="line">include: /etc/unbound/local.d/*.conf     // 681行，将指定的其他可能的配置文件包含进当前文件</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-配置正向和反向解析记录"><a href="#4-配置正向和反向解析记录" class="headerlink" title="4. 配置正向和反向解析记录"></a>4. 配置正向和反向解析记录</h3><p><strong>配置正向解析记录和反向解析记录。可以在全局配置文件中配置，也可以在 /etc/unbound/local.d 目录中定义一个以 .conf 结尾的文件中（如 /etc/unbound/local.d/domain.conf ）配置（以全局配置文件中的第454 行～第470行为格式模板)。在此，继续在全局配置文件中配置正向和反向解析记录</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">local-zone: &quot;xyz.edu.&quot; static //455行:设置解析的区域名</span><br><span class="line">// 添加以下 7 行 local-data，以定义正向解析记录</span><br><span class="line">local-data: &quot;xyz.edu. 86400 IN SOA dns1.xyz.edu. root.xyz.edu 1 1D 1H 1W 1H&quot;</span><br><span class="line">local-data: &quot;dns1.xyz.edu.  IN A     192.168.8.1&quot;</span><br><span class="line">local-data: &quot;dns2.xyz.edu.  IN A     192.168.8.2&quot;</span><br><span class="line">local-data: &quot;www.xyz.edu.   IN A     192.168.8.3&quot;</span><br><span class="line">local-data: &quot;ftp.xyz.edu.   IN CNAME www.xyz.edu.&quot;</span><br><span class="line">local-data: &quot;mail.xyz.edu.  IN A     192.168.8.4&quot;</span><br><span class="line">local-data: &quot;xyz.edu.       IN MX 5  mail.xyz.edu.&quot;</span><br><span class="line">// 添加以下 5 行 local-data-ptr，以定义反向解析记录</span><br><span class="line">local-data-ptr: &quot;192.168.8.1 dns1.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.2 dns2.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.3 www.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.3 ftp.xyz.edu</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-配置转发"><a href="#5-配置转发" class="headerlink" title="5. 配置转发"></a>5. 配置转发</h3><p><strong>配置转发。任何一台 DNS 服务器能直接提供的解析记录都是有限的，当用户请求的解析记录超出了某台 DNS 服务器所能解析的范围时，就需要在该 DNS 服务器上设置转发功能，以便把超范围的用户解析请求转发给其他 DNS 服务器代为解析。若要将本 DNS 服务器的解析请求转发给由 ISP 提供的 IP 地址为 8.8.8.8 的公共 DNS 服务器，则只要在 unbound.conf 作以下修改便可。</strong> </p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">forward-zone:                // 843行，定义转发forward</span><br><span class="line">	name: &quot;.&quot;                // 转发所有的查询</span><br><span class="line">	forward-addr: 8.8.8.8    // 将解析请求转发到指定IP地址的DNS服务器</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-检测配置文件语法错误"><a href="#6-检测配置文件语法错误" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># unbound-checkconf </span></span><br><span class="line">unbound-checkconf: no errors <span class="keyword">in</span> /etc/unbound/unbound.conf</span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-在服务器端的防火墙中开放DNS服务"><a href="#7-在服务器端的防火墙中开放DNS服务" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --permanent --add-service=dns</span></span><br><span class="line">success</span><br><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-Linux客户端测试"><a href="#8-Linux客户端测试" class="headerlink" title="8. Linux客户端测试"></a>8. Linux客户端测试</h3><p><strong>Linux客户端测试。在客户端修改 /etc/resolv.conf 文件，将 DNS 服务器的 IP 地址指向上述所配置的授权 DNS 服务器的 IP 地址→使用 nslookup 命令验证 DNS 查询结果。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/resolv.conf</span></span><br><span class="line">nameserver 192.168.8.1</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># nslookup</span></span><br><span class="line">&gt; www.xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Name:	www.xyz.edu</span><br><span class="line">Address: 192.168.8.3</span><br><span class="line">&gt; 192.168.8.1</span><br><span class="line">1.8.168.192.in-addr.arpa	name = dns1.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=cname</span><br><span class="line">&gt; ftp.xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">ftp.xyz.edu	canonical name = www.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=mx</span><br><span class="line">&gt; xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">xyz.edu	mail exchanger = 5 mail.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、纯缓存-DNS-服务器的配置"><a href="#三、纯缓存-DNS-服务器的配置" class="headerlink" title="三、纯缓存 DNS 服务器的配置"></a>三、纯缓存 DNS 服务器的配置</h2><h3 id="1-配置网络参数-1"><a href="#1-配置网络参数-1" class="headerlink" title="1.  配置网络参数"></a>1.  配置网络参数</h3><p>**以 root 用户身份登录 RHEL7 系统→配置 DNS 服务器网卡的 IP 地址为 192.168.8.1/24、主机名为dn2.xyz.edu **</p>
+<h3 id="2-安装软件包-1"><a href="#2-安装软件包-1" class="headerlink" title="2. 安装软件包"></a>2. 安装软件包</h3><p><strong>安装 Unbound 软件包→启动和开机自动启动。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@dns2 ~]<span class="comment"># mount /dev/cdrom /mnt</span></span><br><span class="line">[root@dns2 ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br><span class="line">[root@dns2 ~]<span class="comment"># systemctl start unbound </span></span><br><span class="line">[root@dns2 ~]<span class="comment"># systemctl enable unbound </span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/unbound.service to /usr/lib/systemd/system/unbound.service.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-编辑配置文件-1"><a href="#3-编辑配置文件-1" class="headerlink" title="3. 编辑配置文件"></a>3. 编辑配置文件</h3><p><strong>使用 vim 编辑配置文件 unbound.conf，对服务器全局参数进行配置</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 配置区域的全局参数：使用</span><br><span class="line">interface: 192.168.8.2              // 52行，设置监听的网络接口(默认监听localhost网络接口)</span><br><span class="line">msg-cache-size: 8m                  // 150行，缓存大小</span><br><span class="line">access-control: 0.0.0.0/24 allow    // 204行，允许allow或拒绝refuse给哪些地址提供解析服务</span><br><span class="line">username: &quot;”                        // 296行，改成空字符串,表示任何用户均可访问</span><br><span class="line">domain-insecure: &quot;xyz.edu&quot;          // 505行，跳过验证域 “xyz.edu”，以避免信任链验证失败</span><br><span class="line">forward-zone:                       // 844行:定义转发forward</span><br><span class="line">	name: &quot;.&quot;                       // 转发所有的查询</span><br><span class="line">	forward-addr: 192.168.8.1       // 将解析请求转发到指定 IP 地址的 DNS 服务器</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-检测配置文件语法错误-1"><a href="#6-检测配置文件语法错误-1" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># unbound-checkconf </span></span><br><span class="line">unbound-checkconf: no errors <span class="keyword">in</span> /etc/unbound/unbound.conf</span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-在服务器端的防火墙中开放DNS服务-1"><a href="#7-在服务器端的防火墙中开放DNS服务-1" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --permanent --add-service=dns</span></span><br><span class="line">success</span><br><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-验证纯缓存-DNS-服务器"><a href="#8-验证纯缓存-DNS-服务器" class="headerlink" title="8. 验证纯缓存 DNS 服务器"></a>8. 验证纯缓存 DNS 服务器</h3><p>**验证纯缓存 DNS 服务器。将客户端的 DNS 服务器的 IP 地址设为纯缓存 DNS 服务器的 IP 地址，然后使用 nslookup 命令测试正向解析和反向解析的效果。 **</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/resolv.conf</span></span><br><span class="line">nameserver 192.168.8.2</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># nslookup</span></span><br><span class="line">&gt; www.xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Name:	www.xyz.edu</span><br><span class="line">Address: 192.168.8.3</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=cname</span><br><span class="line">&gt; ftp.xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">ftp.xyz.edu	canonical name = www.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=mx</span><br><span class="line">&gt; xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">xyz.edu	mail exchanger = 5 mail.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
       
 
       
@@ -766,7 +975,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/21/DNS/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/">展开全文 >></a>
         </p>
       
 
@@ -976,221 +1185,10 @@
 
 
   
-    <article id="post-Win10 Git 安装教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/20/Win10%20Git%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Win10 Git 安装教程</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/20/Win10%20Git%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-05-20T09:47:22.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/20/Win10%20Git%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Win10下使用hexo框架在github上搭建个人博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/18/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Win10下使用hexo框架在github上搭建个人博客</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/18/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-05-18T10:22:18.024Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <br/>
-
-<h2 id="1-注册-github"><a href="#1-注册-github" class="headerlink" title="1.注册 github"></a>1.注册 github</h2><p>1.  进入 官网 <a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a> 点击 <strong>sign up</strong><br><img src="../img/github0.png" alt="github0"></p>
-<p>2. 填写账户信息<br><img src="../img/github00.png" alt="github00"></p>
-<p>3. 完成设置<br><img src="../img/github000.png" alt="github000"></p>
-<p>4. 进行邮箱验证，发送电子邮件<br><img src="../img/github01.png"><br>　打开接收到的 QQ 邮件，核实电子邮件地址<br><img src="../img/github02.png"><br>　核实成功，跳过。<br><img src="../img/github03.png"></p>
-<p>5. 注册成功。</p>
-<p><img src="../img/github04.png"></p>
-<p>6. 配置 SSH 密钥</p>
-<p>　1. 执行命令 <code>ssh-keygen -t rsa -C &quot;邮箱&quot; </code><br>　<img src="../img/github5.png" alt="1621650132619"></p>
-<p>　</p>
-<p>　2. 打 C:\Users\HP\ .ssh 目录下找到 <code>id_rsa.pub</code> 文件，用记事本打开复制里面的内容<br>　<img src="../img/github6.png" alt="1621650588143"></p>
-<p>　</p>
-<p>　3. 打开 你的仓库，编辑配置文件<img src="../img/github7.png" alt="1621650866279"><br>　<img src="../img/github8.png" alt="1621650938831"></p>
-<p>　4. 选择 SSH and GPG Keys 项，点击 New SSH Key<br>　<img src="../img/github9.png" alt="1621651234488"></p>
-<p>　5. 将 <code>id_rsa.pub</code> 文件中的内容复制粘贴到Key中<br>　<img src="../img/github10.png" alt="1621651466912"></p>
-<p>　配置完成。</p>
-<h2 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2. 安装环境"></a>2. 安装环境</h2><h3 id="2-1-安装-nodejs"><a href="#2-1-安装-nodejs" class="headerlink" title="2.1 安装 nodejs"></a>2.1 安装 nodejs</h3><p>1. 进入 官网 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载 <strong>nodejs</strong><br><img src="../img/nodejs0.png" alt="nodejs0"><br>2. 打开下载位置，双击 <strong>node—-.msi</strong> 进行安装<br><img src="../img/nodejs00.png" alt="nodejs00"></p>
-<p>3. 一直 Next<br>　选择自动安装一些工具<br><img src="../img/nodejs1.png" alt="nodejs1"></p>
-<p>　安装完成，弹出控制台<br><img src="../img/nodejs2.png" alt="nodejs2"><br>回车继续</p>
-<p>4. 使用 <code>windows + R</code>  输出 <code>cmd</code> 启动命令行<br>　使用命令 <code>node -v</code>  、<code>nmp -v</code>  查看版本信息<br><img src="../img/nodejs4.png" alt="nodejs3"><br>　如果失败则重启电脑再次输入</p>
-<p>5. 输入命令 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code> 安装淘宝的源 cnpm<br><img src="../img/cnpm1.png" alt="cnpm1"></p>
-<p>　输入命令 <code>cnpm -v</code> 查看安装信息<br><img src="../img/cnpm2.png" alt="cnpm2"></p>
-<h3 id="2-2-安装-hexo-框架"><a href="#2-2-安装-hexo-框架" class="headerlink" title="2.2 安装 hexo 框架"></a>2.2 安装 hexo 框架</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">windows 命令</span><br><span class="line">	创建目录                 md 目录</span><br><span class="line">	显示指定工作目录下的内容    chdir </span><br><span class="line">	</span><br><span class="line">hexo 语法</span><br><span class="line">    hexo new &quot;***&quot;    创建新的帖子</span><br><span class="line">    hexo clean        清楚缓存</span><br><span class="line">    hexo g            生成静态文件</span><br><span class="line">    hexo generate</span><br><span class="line">    hexo s            启动服务</span><br><span class="line">    hexo server</span><br><span class="line">    hexo d            部署到远程站点</span><br><span class="line">    hexo deploy</span><br></pre></td></tr></table></figure>
-
-
-
-<p>1. 输入命令 <code>cnpm install -g hexo-cli</code> 安装 hexo 框架<br><img src="../img/hexo1.png" alt="hexo1"></p>
-<p>2. 输入命令 <code>hexo -v</code> 查看版本信息<br><img src="../img/hexo2.png" alt="hexo2"></p>
-<h3 id="2-3-安装-git"><a href="#2-3-安装-git" class="headerlink" title="2.3 安装 git"></a>2.3 安装 git</h3><p>1. 进入官网 <a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a><br><img src="../img/git0.png"></p>
-<p>2. 下载<br><img src="../img/git1.png"></p>
-<p>3. 打开下载位置，双击 <strong>Git—-bit.exe</strong> 进行安装<br><img src="../img/git2.png"></p>
-<p>4. 安装 <strong>Git</strong> 工具</p>
-<p>　1.  以下安装步骤均为默认选项，不爱折腾的伙伴们可以直接 Next 到 Finsh 完成安装。<br>　<img src="../img/git3.png" alt="1621504212582"></p>
-<p>　2.  点击 Next , 选择组件<br>　<img src="../img/git4.png"></p>
-<p>　3.  点击 Next，选择默认编辑器<br>　<img src="../img/git5.png"></p>
-<p>　4.  点击 Next，设置分支名称<br>　<img src="../img/git6.png"></p>
-<p>　5.  点击 Next，配置 PATH 环境<br>　<img src="../img/git7.png"></p>
-<p>　6.  点击 Next，选择 HTTPS 传输后端<br>　<img src="../img/git8.png"><br>　<br>　7.  点击 Next，配置行结束转换<br>　<img src="../img/git10.png"></p>
-<p>　8.  点击 Next，配置终端模拟器与 Git Bash 一起使用<br>　<img src="../img/git9.png"></p>
-<p>　9.  点击 Next，配置 Git 默认行为<br>　<img src="../img/git11.png"></p>
-<p>　10.   点击 Next，选择凭据助手<br>　<img src="../img/git12.png"></p>
-<p>　11.   点击 Next，配置额外选项<br>　<img src="../img/git13.png"></p>
-<p>　12. 点击 Install 安装</p>
-<p>5. 打开 <strong>Git Bash</strong><br>　在任意目录下鼠标右键即可看到有 <strong>Git GUI Here</strong> 与 <strong>Git Bash Here</strong> 两个选项。<br><img src="../img/git14.png"></p>
-<p>　点击 <strong>Git Bash Here</strong> 弹出命令行窗口，说明安装成功<br><img src="../img/git15.png"></p>
-<h2 id="3-配置环境"><a href="#3-配置环境" class="headerlink" title="3. 配置环境"></a>3. 配置环境</h2><p>1. 创建目录 blog <code>md 目录</code><br><img src="../img/hexo3.png"></p>
-<p>2. 执行命令 <code>hexo init</code> 会在当前目录下生成 hexo 项目 </p>
-<p>　生成时卡住输入回车键即可解决</p>
-<p>　出现  <font color='green'><code>INFO </code></font><code>Start blogging with Hexo!</code> 代表生成成功 </p>
-<p>　<img src="../img/hexo4.png" alt="hexo4"></p>
-<p>3. 执行命令 <code>hexo s</code> 或 <code>hexo server</code> 开启 hexo 服务<br><img src="../img/hexo5.png" alt="hexo5"></p>
-<p>　使用路径 <code> localhost:4000</code> 即可访问<br>　<img src="../img/hexo6.png" alt="hexo6"></p>
-<p>　执行命令 <code>ctrl + c</code> 关闭服务即可退出<br>　<img src="../img/hexo7.png" alt="hexo7"></p>
-<p>4. 在 github 中新建一个仓库<br><img src="../img/github1.png" alt="github1"></p>
-<p>　输入仓库名必须为 <font color='red'>用户名.github.io</font><br>　<img src="../img/github2.png" alt="github2"><br>　点击 create repository 创建仓库</p>
-<p>　把生成的路径复制下来后续配置文件中要用<br>　<img src="../img/github3.png" alt="github3"></p>
-<p>​       </p>
-<p>5. 安装插件 <code>cnpm install --save hexo-deployer-git</code><br><img src="../img/hexo8.png" alt="hexo8"></p>
-<p>​       </p>
-<p>6. 使用记事本打开 hexo 项目目录下的配置文件 <code>_config.yml</code> </p>
-<p>　修改配置文件中 deploy 项
-　</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: &#x27;git&#x27;</span><br><span class="line">repo: https://github.com/ccy-blog/ccy-blog.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>repo: 后面为创建 github 仓库时生成的路径</p>
-<p>7. 设置 用户名 和 邮件<br>　<code>git config --global user.email &quot;邮箱&quot;</code><br>　<code>git config --global user.name &quot;用户名&quot;</code></p>
-<p>　<img src="../img/hexo9.png"></p>
-<h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4. 运行"></a>4. 运行</h2><p>1. 使用 <code>hexo clean</code> 清楚缓存<br><img src="../img/hexo10.png"></p>
-<p>2. 使用 <code>hexo g</code> 或 <code>hexo generate</code> 生成静态文件<br><img src="../img/hexo11.png"></p>
-<p>3. 使用 <code>hexo d</code> 或 <code>hexo deploy</code> 部署到远程站点<br><img src="../img/hexo12.png"></p>
-<p>　1. <strong>出现错误：</strong> <font color=red>fatal: unable to access “xxx‘‘: OpenSSL SSL_read:Connection was reset, errno 10054</font></p>
-<p>　　使用 <code>git config --global http.sslVerify &quot;false&quot;</code>  解决</p>
-<p>　　产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
-<p>　　解决办法：解除ssl验证</p>
-<p>　2. <strong>出现错误：</strong> <font color=red>Failed to connect to github.com port 443: Timed out</font></p>
-<p>　　网络问题，等会儿再上传，因为 github 是外网。</p>
-<p>4. 使用路径 <code>用户名.github.io</code> 即可访问自己的博客 </p>
-<p><img src="../img/hexo13.png" alt="1621566839396"></p>
-<h2 id="5-更换博客主题"><a href="#5-更换博客主题" class="headerlink" title="5. 更换博客主题"></a>5. 更换博客主题</h2><ul>
-<li>找到自己喜欢的主题，下载下来放到 hexo 项目的 <code>themes/</code> 目录下</li>
-</ul>
-<blockquote>
-<p>我临时使用的 <code>https://github.com/litten/hexo-theme-yilia</code> 这个主题</p>
-</blockquote>
-<p>　在目录 <code>themes/</code> 下右键鼠标打开 Git Bash 输入指令 <code>git clone 地址</code> 回车进行下载<img src="../img/hexo15.png" alt="1621570232717"><br>　<br>　下载完成后在该目录下复制主题名</p>
-<p>　<img src="../img/hexo14.png" alt="1621567563793"></p>
-<ul>
-<li>修改 <code>_config.yml</code> 配置文件内容</li>
-</ul>
-<p>　记事本打 <code>_config.yml</code> 配置文件，修改 <code>theme:landscape</code> 为 <code>theme: yilia</code></p>
-<p>　清楚缓存 <code>hexo clean</code> 从新部署 <code>hexo d</code> 即可生效</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/18/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 

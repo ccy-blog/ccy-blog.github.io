@@ -6,17 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>DNS | Hexo</title>
+  <title>DNS 服务器的配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="DNS">
-<meta property="og:url" content="http://example.com/2021/05/21/DNS/index.html">
+  <meta name="description" content="一、DNS 服务解析：域名系统 1. Unbound 软件包 unbound-1.4.20-28.el7.x86_64.rpm 　DNS的主程序包。  unbound-libs-1.4.20-28.el7.x86_64 　进行域名解析必备的库文件。    2. Unbound 服务器的安装与运行管理 Unbound 服务的安装 12[root@localhost ~]# mount &#x2F;dev&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS 服务器的配置">
+<meta property="og:url" content="http://example.com/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、DNS 服务解析：域名系统 1. Unbound 软件包 unbound-1.4.20-28.el7.x86_64.rpm 　DNS的主程序包。  unbound-libs-1.4.20-28.el7.x86_64 　进行域名解析必备的库文件。    2. Unbound 服务器的安装与运行管理 Unbound 服务的安装 12[root@localhost ~]# mount &#x2F;dev&#x2F;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/05/21/img/dns1.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/dhcp0.png">
+<meta property="og:image" content="c:/Users/HP/AppData/Roaming/Typora/typora-user-images/1622099016595.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/dhcp01.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/dhcp1.png">
+<meta property="og:image" content="http://example.com/2021/05/21/img/dhcp2.png">
 <meta property="article:published_time" content="2021-05-21T11:51:54.271Z">
-<meta property="article:modified_time" content="2021-05-21T11:52:36.620Z">
+<meta property="article:modified_time" content="2021-05-27T12:56:49.969Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/21/img/dns1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -152,19 +161,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-DNS" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DNS 服务器的配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      DNS
+      DNS 服务器的配置
     </h1>
   
 
         
-        <a href="/2021/05/21/DNS/" class="archive-article-date">
+        <a href="/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
   	<time datetime="2021-05-21T11:51:54.271Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
 </a>
         
@@ -172,7 +181,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <br/>
+
+<h2 id="一、DNS-服务"><a href="#一、DNS-服务" class="headerlink" title="一、DNS 服务"></a>一、DNS 服务</h2><p>解析：<a target="_blank" rel="noopener" href='https://baike.baidu.com/item/域名系统'>域名系统</a></p>
+<h3 id="1-Unbound-软件包"><a href="#1-Unbound-软件包" class="headerlink" title="1. Unbound 软件包"></a>1. Unbound 软件包</h3><ul>
+<li><p>unbound-1.4.20-28.el7.x86_64.rpm</p>
+<p>　DNS的主程序包。</p>
+</li>
+<li><p>unbound-libs-1.4.20-28.el7.x86_64</p>
+<p>　进行域名解析必备的库文件。 </p>
+</li>
+</ul>
+<h3 id="2-Unbound-服务器的安装与运行管理"><a href="#2-Unbound-服务器的安装与运行管理" class="headerlink" title="2. Unbound 服务器的安装与运行管理"></a>2. Unbound 服务器的安装与运行管理</h3><ul>
+<li><p>Unbound 服务的安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mount /dev/cdrom /mnt </span></span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br></pre></td></tr></table></figure></li>
+<li><p>启动、重启、查询服务的启动状态、停止<br>  　<code>systemctl start|stop|restart|reload|status unbound.service</code></p>
+</li>
+<li><p>Unbound 服务在系统开机时自动启动或不启动的命令格式如下：<br>　<code>systemctl enable|disable unbound.service</code></p>
+</li>
+<li><p>检查dhcpd进程<br>　<code>ps -ef | grep unbound</code></p>
+</li>
+<li><p>查看dhcpd运行的端口<br>　<code>ss -nutap | grep unbound</code></p>
+</li>
+</ul>
+<blockquote>
+<p>实例：搭建一台授权DNS服务器，该服务器能访问互联网中其他DNS服务器，能解析内网搭建的所有服务器的域名，并通过配置转发地址使内网的用户使用域名访问外网的服务器。</p>
+</blockquote>
+<p><img src="../img/dns1.png" alt="1622097501399"></p>
+<h2 id="二、授权-DNS-服务器的配置"><a href="#二、授权-DNS-服务器的配置" class="headerlink" title="二、授权 DNS 服务器的配置"></a>二、授权 DNS 服务器的配置</h2><h3 id="1-配置网络参数"><a href="#1-配置网络参数" class="headerlink" title="1.  配置网络参数"></a>1.  配置网络参数</h3><p>**以 root 用户身份登录 RHEL7 系统→配置 DNS 服务器网卡的 IP 地址为 192.168.8.1/24、主机名为dns1.xyz.edu **</p>
+<p>编辑-&gt;虚拟网络编辑器-&gt;更改设置-&gt;添加网络-&gt;添加网络-&gt;修改子网 IP</p>
+<p><img src="../img/dhcp0.png" alt="1621988717997"><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\1622099016595.png" alt="1622099016595"></p>
+<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="../img/dhcp01.png" alt="1621989008068"></p>
+<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="../img/dhcp1.png" alt="1621952959542"><br><img src="../img/dhcp2.png" alt="1621953070703"></p>
+<h3 id="2-安装软件包"><a href="#2-安装软件包" class="headerlink" title="2. 安装软件包"></a>2. 安装软件包</h3><p><strong>安装 Unbound 软件包→启动和开机自动启动 Unbound 服务。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># mount /dev/cdrom /mnt</span></span><br><span class="line">[root@dns1 ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound </span></span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl enable unbound </span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/unbound.service to /usr/lib/systemd/system/unbound.service.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-编辑配置文件"><a href="#3-编辑配置文件" class="headerlink" title="3. 编辑配置文件"></a>3. 编辑配置文件</h3><p><strong>使用 vim 编辑配置文件 unbound.conf，对服务器全局参数进行配置</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 配置区域的全局参数：使用</span><br><span class="line">interface: 192.168.8.1                   // 52行，设置监听的网络接口(默认监听localhost网络接口)</span><br><span class="line">access-control: 192.168.8.0/24 allow     // 203行，允许allow或拒绝refuse给哪些地址提供解析服务</span><br><span class="line">username: &quot;”                             // 295行，改成空字符串,表示任何用户均可访问</span><br><span class="line">domain-insecure: &quot;xyz.edu&quot;               // 504行，跳过验证域 “xyz.edu”，以避免信任链验证失败</span><br><span class="line">include: /etc/unbound/local.d/*.conf     // 681行，将指定的其他可能的配置文件包含进当前文件</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-配置正向和反向解析记录"><a href="#4-配置正向和反向解析记录" class="headerlink" title="4. 配置正向和反向解析记录"></a>4. 配置正向和反向解析记录</h3><p><strong>配置正向解析记录和反向解析记录。可以在全局配置文件中配置，也可以在 /etc/unbound/local.d 目录中定义一个以 .conf 结尾的文件中（如 /etc/unbound/local.d/domain.conf ）配置（以全局配置文件中的第454 行～第470行为格式模板)。在此，继续在全局配置文件中配置正向和反向解析记录</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">local-zone: &quot;xyz.edu.&quot; static //455行:设置解析的区域名</span><br><span class="line">// 添加以下 7 行 local-data，以定义正向解析记录</span><br><span class="line">local-data: &quot;xyz.edu. 86400 IN SOA dns1.xyz.edu. root.xyz.edu 1 1D 1H 1W 1H&quot;</span><br><span class="line">local-data: &quot;dns1.xyz.edu.  IN A     192.168.8.1&quot;</span><br><span class="line">local-data: &quot;dns2.xyz.edu.  IN A     192.168.8.2&quot;</span><br><span class="line">local-data: &quot;www.xyz.edu.   IN A     192.168.8.3&quot;</span><br><span class="line">local-data: &quot;ftp.xyz.edu.   IN CNAME www.xyz.edu.&quot;</span><br><span class="line">local-data: &quot;mail.xyz.edu.  IN A     192.168.8.4&quot;</span><br><span class="line">local-data: &quot;xyz.edu.       IN MX 5  mail.xyz.edu.&quot;</span><br><span class="line">// 添加以下 5 行 local-data-ptr，以定义反向解析记录</span><br><span class="line">local-data-ptr: &quot;192.168.8.1 dns1.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.2 dns2.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.3 www.xyz.edu&quot;</span><br><span class="line">local-data-ptr: &quot;192.168.8.3 ftp.xyz.edu</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-配置转发"><a href="#5-配置转发" class="headerlink" title="5. 配置转发"></a>5. 配置转发</h3><p><strong>配置转发。任何一台 DNS 服务器能直接提供的解析记录都是有限的，当用户请求的解析记录超出了某台 DNS 服务器所能解析的范围时，就需要在该 DNS 服务器上设置转发功能，以便把超范围的用户解析请求转发给其他 DNS 服务器代为解析。若要将本 DNS 服务器的解析请求转发给由 ISP 提供的 IP 地址为 8.8.8.8 的公共 DNS 服务器，则只要在 unbound.conf 作以下修改便可。</strong> </p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">forward-zone:                // 843行，定义转发forward</span><br><span class="line">	name: &quot;.&quot;                // 转发所有的查询</span><br><span class="line">	forward-addr: 8.8.8.8    // 将解析请求转发到指定IP地址的DNS服务器</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-检测配置文件语法错误"><a href="#6-检测配置文件语法错误" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># unbound-checkconf </span></span><br><span class="line">unbound-checkconf: no errors <span class="keyword">in</span> /etc/unbound/unbound.conf</span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-在服务器端的防火墙中开放DNS服务"><a href="#7-在服务器端的防火墙中开放DNS服务" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --permanent --add-service=dns</span></span><br><span class="line">success</span><br><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-Linux客户端测试"><a href="#8-Linux客户端测试" class="headerlink" title="8. Linux客户端测试"></a>8. Linux客户端测试</h3><p><strong>Linux客户端测试。在客户端修改 /etc/resolv.conf 文件，将 DNS 服务器的 IP 地址指向上述所配置的授权 DNS 服务器的 IP 地址→使用 nslookup 命令验证 DNS 查询结果。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/resolv.conf</span></span><br><span class="line">nameserver 192.168.8.1</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># nslookup</span></span><br><span class="line">&gt; www.xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Name:	www.xyz.edu</span><br><span class="line">Address: 192.168.8.3</span><br><span class="line">&gt; 192.168.8.1</span><br><span class="line">1.8.168.192.in-addr.arpa	name = dns1.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=cname</span><br><span class="line">&gt; ftp.xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">ftp.xyz.edu	canonical name = www.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=mx</span><br><span class="line">&gt; xyz.edu</span><br><span class="line">Server:		192.168.8.1</span><br><span class="line">Address:	192.168.8.1<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">xyz.edu	mail exchanger = 5 mail.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、纯缓存-DNS-服务器的配置"><a href="#三、纯缓存-DNS-服务器的配置" class="headerlink" title="三、纯缓存 DNS 服务器的配置"></a>三、纯缓存 DNS 服务器的配置</h2><h3 id="1-配置网络参数-1"><a href="#1-配置网络参数-1" class="headerlink" title="1.  配置网络参数"></a>1.  配置网络参数</h3><p>**以 root 用户身份登录 RHEL7 系统→配置 DNS 服务器网卡的 IP 地址为 192.168.8.1/24、主机名为dn2.xyz.edu **</p>
+<h3 id="2-安装软件包-1"><a href="#2-安装软件包-1" class="headerlink" title="2. 安装软件包"></a>2. 安装软件包</h3><p><strong>安装 Unbound 软件包→启动和开机自动启动。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@dns2 ~]<span class="comment"># mount /dev/cdrom /mnt</span></span><br><span class="line">[root@dns2 ~]<span class="comment"># rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm</span></span><br><span class="line">[root@dns2 ~]<span class="comment"># systemctl start unbound </span></span><br><span class="line">[root@dns2 ~]<span class="comment"># systemctl enable unbound </span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/unbound.service to /usr/lib/systemd/system/unbound.service.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-编辑配置文件-1"><a href="#3-编辑配置文件-1" class="headerlink" title="3. 编辑配置文件"></a>3. 编辑配置文件</h3><p><strong>使用 vim 编辑配置文件 unbound.conf，对服务器全局参数进行配置</strong></p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 配置区域的全局参数：使用</span><br><span class="line">interface: 192.168.8.2              // 52行，设置监听的网络接口(默认监听localhost网络接口)</span><br><span class="line">msg-cache-size: 8m                  // 150行，缓存大小</span><br><span class="line">access-control: 0.0.0.0/24 allow    // 204行，允许allow或拒绝refuse给哪些地址提供解析服务</span><br><span class="line">username: &quot;”                        // 296行，改成空字符串,表示任何用户均可访问</span><br><span class="line">domain-insecure: &quot;xyz.edu&quot;          // 505行，跳过验证域 “xyz.edu”，以避免信任链验证失败</span><br><span class="line">forward-zone:                       // 844行:定义转发forward</span><br><span class="line">	name: &quot;.&quot;                       // 转发所有的查询</span><br><span class="line">	forward-addr: 192.168.8.1       // 将解析请求转发到指定 IP 地址的 DNS 服务器</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-检测配置文件语法错误-1"><a href="#6-检测配置文件语法错误-1" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># unbound-checkconf </span></span><br><span class="line">unbound-checkconf: no errors <span class="keyword">in</span> /etc/unbound/unbound.conf</span><br><span class="line">[root@dns1 ~]<span class="comment"># systemctl restart unbound</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-在服务器端的防火墙中开放DNS服务-1"><a href="#7-在服务器端的防火墙中开放DNS服务-1" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --permanent --add-service=dns</span></span><br><span class="line">success</span><br><span class="line">[root@dns1 ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-验证纯缓存-DNS-服务器"><a href="#8-验证纯缓存-DNS-服务器" class="headerlink" title="8. 验证纯缓存 DNS 服务器"></a>8. 验证纯缓存 DNS 服务器</h3><p>**验证纯缓存 DNS 服务器。将客户端的 DNS 服务器的 IP 地址设为纯缓存 DNS 服务器的 IP 地址，然后使用 nslookup 命令测试正向解析和反向解析的效果。 **</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/resolv.conf</span></span><br><span class="line">nameserver 192.168.8.2</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># nslookup</span></span><br><span class="line">&gt; www.xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Name:	www.xyz.edu</span><br><span class="line">Address: 192.168.8.3</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=cname</span><br><span class="line">&gt; ftp.xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">ftp.xyz.edu	canonical name = www.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">set</span> <span class="built_in">type</span>=mx</span><br><span class="line">&gt; xyz.edu</span><br><span class="line">Server:		192.168.8.2</span><br><span class="line">Address:	192.168.8.2<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">xyz.edu	mail exchanger = 5 mail.xyz.edu.</span><br><span class="line">&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
       
 
       
@@ -251,7 +354,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/21/DNS/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/21/DNS%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -265,11 +368,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/21/DHCP/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/21/DHCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          DHCP
+          DHCP 服务器的搭建
         
       </div>
     </a>
