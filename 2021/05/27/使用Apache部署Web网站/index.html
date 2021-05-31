@@ -8,17 +8,25 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>使用 Apache 部署 Web 网站 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、">
+  <meta name="description" content="一、Web 服务1. Apache 软件包 httpd-2.4.6-45.el7.x86_64.rpm　 主程序包，服务器端必须安装该软件包 httpd-devel-2.4.6-45.el7.x86_64.rpm　 Apache 开发程序包  httpd-manual-2.4.6-45.el7.x86_64.noarch.rpm　 Apache 的手册文档和说明指南  Apache 版本的更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Apache 部署 Web 网站">
 <meta property="og:url" content="http://example.com/2021/05/27/%E4%BD%BF%E7%94%A8Apache%E9%83%A8%E7%BD%B2Web%E7%BD%91%E7%AB%99/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、">
+<meta property="og:description" content="一、Web 服务1. Apache 软件包 httpd-2.4.6-45.el7.x86_64.rpm　 主程序包，服务器端必须安装该软件包 httpd-devel-2.4.6-45.el7.x86_64.rpm　 Apache 开发程序包  httpd-manual-2.4.6-45.el7.x86_64.noarch.rpm　 Apache 的手册文档和说明指南  Apache 版本的更新">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache1.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache2.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache3.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache6.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache7.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache8.png">
+<meta property="og:image" content="http://example.com/2021/05/27/img/apache.png">
 <meta property="article:published_time" content="2021-05-27T13:00:01.536Z">
-<meta property="article:modified_time" content="2021-05-27T13:06:28.301Z">
+<meta property="article:modified_time" content="2021-05-31T13:01:38.717Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/27/img/apache1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -176,7 +184,160 @@
       
         <br/>
 
-<h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2>
+<h2 id="一、Web-服务"><a href="#一、Web-服务" class="headerlink" title="一、Web 服务"></a>一、Web 服务</h2><h3 id="1-Apache-软件包"><a href="#1-Apache-软件包" class="headerlink" title="1. Apache 软件包"></a>1. Apache 软件包</h3><ul>
+<li>httpd-2.4.6-45.el7.x86_64.rpm<br>　 主程序包，服务器端必须安装该软件包</li>
+<li>httpd-devel-2.4.6-45.el7.x86_64.rpm<br>　 Apache 开发程序包 </li>
+<li>httpd-manual-2.4.6-45.el7.x86_64.noarch.rpm<br>　 Apache 的手册文档和说明指南 </li>
+<li>Apache 版本的更新一般要快于 Linux 内核的更新，要下载新的 Apache 版本，可到网站下载：<br>　 <a target="_blank" rel="noopener" href="http://updates.redhat.com/">http://updates.redhat.com</a><br>  　 <a target="_blank" rel="noopener" href="http://www.apache.org/">http://www.apache.org</a></li>
+</ul>
+<h3 id="2-Web-服务器的安装与运行管理"><a href="#2-Web-服务器的安装与运行管理" class="headerlink" title="2. Web 服务器的安装与运行管理"></a>2. Web 服务器的安装与运行管理</h3><ul>
+<li><p>安装 Apache 软件包：<code>yum -y install httpd</code></p>
+</li>
+<li><p>Apache 启动、重启、重新装载、关闭<br>　<code>systemctl start|stop|restart|reload|status httpd.service</code></p>
+</li>
+<li><p>设置自动启动<br>　<code>systemctl enable|disable httpd</code></p>
+</li>
+<li><p>检查是否运行了 httpd 进程<br>　<code>ps -ef | grep httpd</code></p>
+</li>
+<li><p>查看 httpd 运行的端口<br>　<code> ss -nutap | grep httpd</code></p>
+</li>
+</ul>
+<h3 id="3-Apache-服务的测试"><a href="#3-Apache-服务的测试" class="headerlink" title="3. Apache 服务的测试"></a>3. Apache 服务的测试</h3><p><strong>Apache服务启动后，可以在浏览器里输入以下地址，若可看到默认首 页，则工作正常。</strong><br><a target="_blank" rel="noopener" href="http://ip/">http://ip</a> 或者 <a target="_blank" rel="noopener" href="http://127.0.0.1,该页面实际在/">http://127.0.0.1，该页面实际在</a> /var/www/error/noindex.html<br><img src="../img/apache1.png" alt="1622122974146"></p>
+<h2 id="二、搭建-Web-主服务器"><a href="#二、搭建-Web-主服务器" class="headerlink" title="二、搭建 Web 主服务器"></a>二、搭建 Web 主服务器</h2><h3 id="1-修改主配置文件"><a href="#1-修改主配置文件" class="headerlink" title="1. 修改主配置文件"></a>1. 修改主配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf/httpd.conf</span></span><br><span class="line">ServerRoot <span class="string">&quot;/etc/httpd&quot;</span>         // 31行，设置 Apache 的根目录为 /etc/httpd</span><br><span class="line">Listen 80                       // 42行，设置 httpd 监听端口 80</span><br><span class="line">ServerAdmin root@localhost      // 86行，设置管理员 E-mail 地址为 root@dyzx.com</span><br><span class="line">ServerName 192.168.1.1:80       // 95行，设置Web服务器的主机名和监听端口为</span><br><span class="line">DocumentRoot <span class="string">&quot;/var/www/html&quot;</span>    // 119行，设置网页文档的主目录为 /var/www/html</span><br><span class="line">DirectoryIndex index.html       // 164行，设置主页文件为 index.html</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-自己建立网页"><a href="#2-自己建立网页" class="headerlink" title="2. 自己建立网页"></a>2. 自己建立网页</h3><p><strong>将制作好的网页文档存放在目录 /var/www/html 中，测试用首页建立如下：</strong><br><code>echo &quot;Welcome to www.linux.com!!&quot; &gt;&gt; /var/www/html/index.html</code><br><strong>默认情况下，Web 服务要通过 TCP 协议的 80 端口对外通信，如果安装了防火墙，需要用以下命令打开 Web 服务的 80 端口或者停止防火墙后才可以从其他主机进行访问。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --zone=public --add-service=http --permanent</span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-测试配置文件"><a href="#3-测试配置文件" class="headerlink" title="3. 测试配置文件"></a>3. 测试配置文件</h3><p><strong>测试配置文件→重新启动httpd服务。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># apachectl configtest</span></span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]<span class="comment"># service httpd restart</span></span><br><span class="line">Redirecting to /bin/systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1”,便/">http://192.168.1.1”，便</a> 可访问首页。</strong><br><img src="../img/apache2.png" alt="1622125749966"></p>
+<h2 id="三、使用虚拟目录建子网站"><a href="#三、使用虚拟目录建子网站" class="headerlink" title="三、使用虚拟目录建子网站"></a>三、使用虚拟目录建子网站</h2><p><strong>虚拟目录有以下优点。</strong><br>　便于访问。<br>　便于移动站点中的目录。<br>　能灵活加大磁盘空间。<br>　安全性好。<br><strong>使用Alias选项可以创建虚拟目录。</strong></p>
+<blockquote>
+</blockquote>
+<h3 id="1-创建目录及首页文件"><a href="#1-创建目录及首页文件" class="headerlink" title="1. 创建目录及首页文件"></a>1. 创建目录及首页文件</h3><p><strong>创建虚拟目录存放位置及虚拟目录默认首页文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir -p /xyz/rjgc</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;Welcome to rjgc index&quot; &gt; /xyz/rjgc/index.html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-创建编辑配置文件"><a href="#2-创建编辑配置文件" class="headerlink" title="2. 创建编辑配置文件"></a>2. 创建编辑配置文件</h3><p><strong>创建 、编辑虚拟目录子配置文件。默认情况下，位于 /etc/httpd/conf.d/ 目录下的所有以 .conf 结尾的文件都会被加载作为 Apache 的配置信息，为此，在 /etc/httpd/conf.d/ 下新建一个子配置文件（如 vdir.conf）来配 置虚拟目录</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf.d/vdir.conf</span></span><br><span class="line">Alias /rjgcx <span class="string">&quot;/xyz/rjgc&quot;</span>          // 定义虚拟目录的别名为 /rjgcx，物理路径为 /xyz/rjgc</span><br><span class="line">&lt;Directory <span class="string">&quot;/xyz/rjgc&quot;</span>&gt;</span><br><span class="line">    Options Indexes FollowSymLinks    // 当所设目录下没有 index.html 文件时就显示目录结构</span><br><span class="line">    AllowOverride None                // 禁止 .htaccess 文件覆盖配置</span><br><span class="line">    Require all granted               // 授权允许所有访问</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-修改安全上下文"><a href="#3-修改安全上下文" class="headerlink" title="3.  修改安全上下文"></a>3.  修改安全上下文</h3><p><strong>若开启了 SELinux，且网页文件的存放目录不在标准位置（/var/www/）时，则必须将 /xyz/ 目录的安全上下文修改为 httpd_sys_content_t，才能有权访问其中的网页。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># semanage fcontext -a -t httpd_sys_content_t &#x27;/xyz(/.*)?&#x27;</span></span><br><span class="line">[root@localhost ~]<span class="comment"># restorecon -Rv /xyz/             // 将设置的默认上下文应用于指定的目录文件</span></span><br><span class="line">restorecon reset /xyz context unconfined_u:object_r:default_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0</span><br><span class="line">restorecon reset /xyz/rjgc context unconfined_u:object_r:default_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0</span><br><span class="line">restorecon reset /xyz/rjgc/index.html context unconfined_u:object_r:default_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-重新启动服务"><a href="#4-重新启动服务" class="headerlink" title="4. 重新启动服务"></a>4. 重新启动服务</h3><p>执行指令：<code>systemctl restart httpd.service </code></p>
+<h3 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1/rjgcx%E2%80%9D">http://192.168.1.1/rjgcx”</a> 便可访问</strong><br><img src="../img/apache3.png" alt="1622174001048"></p>
+<h2 id="四、使用虚拟主机建立多个网站"><a href="#四、使用虚拟主机建立多个网站" class="headerlink" title="四、使用虚拟主机建立多个网站"></a>四、使用虚拟主机建立多个网站</h2><blockquote>
+<ol>
+<li>基于名称虚主机：                     一个网卡    一个 IP    多个域名    多个网站 </li>
+<li>基于 IP 虚主机：                       一个网卡    多个 IP    多个网站</li>
+<li>基于端口号：                            一个网卡    一个 IP    多个端口    多个网站</li>
+<li>根据用户限制网站访问权限：     </li>
+<li>建立用户主页：</li>
+</ol>
+</blockquote>
+<h3 id="1-基于域名的虚拟主机"><a href="#1-基于域名的虚拟主机" class="headerlink" title="1. 基于域名的虚拟主机"></a>1. 基于域名的虚拟主机</h3><blockquote>
+<p>名称　　　　IP 地址　　端口　　　　域名　　　　　站点主目录　　　日志文件位置<br>Web_A　　192.168.1.1　80　　www1.xyz.edu　/var/www/web1/　/etc/httpd/logs/<br>Web_B　　192.168.1.1　80　　www2.xyz.edu　/var/www/web2/　/etc/httpd/logs/ </p>
+</blockquote>
+<h4 id="1-1-创建目录与文件"><a href="#1-1-创建目录与文件" class="headerlink" title="1.1 创建目录与文件"></a>1.1 创建目录与文件</h4><p><strong>创建所需的目录和默认首页文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir -p /var/www/web1 /var/www/web2</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is www1.xyz.edu&#x27;s web1&quot; &gt; /var/www/web1/index.html</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is www2.xyz.edu&#x27;s web2&quot; &gt; /var/www/web2/index.html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-编辑配置文件"><a href="#1-2-编辑配置文件" class="headerlink" title="1.2 编辑配置文件"></a>1.2 编辑配置文件</h4><p><strong>复制虚拟主机配置文件的样本文件→编辑虚拟主机配 置文件→重启httpd服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cp /usr/share/doc/httpd-2.4.6/httpd-vhosts.conf  /etc/httpd/conf.d</span></span><br><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf.d/httpd-vhosts.conf </span></span><br><span class="line">&lt;VirtualHost 192.168.1.1&gt;</span><br><span class="line">    DocumentRoot /var/www/web1</span><br><span class="line">    ServerName www1.xyz.edu</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">&lt;VirtualHost 192.168.1.1&gt;</span><br><span class="line">    DocumentRoot /var/www/web2</span><br><span class="line">    ServerName www2.xyz.edu</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl restart httpd.service</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-3-添加域名解析记录"><a href="#1-3-添加域名解析记录" class="headerlink" title="1.3  添加域名解析记录"></a>1.3  添加域名解析记录</h4><p><strong>为了实现用域名访问虚拟主机,在客户机上通过编辑 hosts 文件添加域名解析记录。若是 Linux 客户机，则修改  “/etc/hosts”</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/hosts</span></span><br><span class="line">192.168.1.1 www.web1.com www.web2.com</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-4-访问"><a href="#1-4-访问" class="headerlink" title="1.4 访问"></a>1.4 访问</h4><p><strong>在客户机启动浏览器,在地址栏键入分别输入两个虚拟主机的域名，则会显示各自的网站首页，如图所示</strong></p>
+<h3 id="2-基于端口号的虚拟主机"><a href="#2-基于端口号的虚拟主机" class="headerlink" title="2. 基于端口号的虚拟主机"></a>2. 基于端口号的虚拟主机</h3><blockquote>
+<p>名称　　　　IP 地址　　端口　　　　域名　　　　　站点主目录<br>Web_A　　192.168.1.1　80　　　www1.xyz.edu　/var/www/web1/<br>Web_C　　192.168.1.1　8088　　www2.xyz.edu　/var/www/web2/</p>
+</blockquote>
+<h4 id="2-1-创建目录与文件"><a href="#2-1-创建目录与文件" class="headerlink" title="2.1 创建目录与文件"></a>2.1 创建目录与文件</h4><p><strong>创建 Web_C 站点的主目录（Web_A 站点的主目录不变）和两个首页文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir -p /var/www/web3</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is port80&#x27;s web&quot; &gt; /var/www/web1/index.html </span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is port8088&#x27;s web&quot; &gt; /var/www/web3/index.html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2-添加监听端口"><a href="#2-2-添加监听端口" class="headerlink" title="2.2 添加监听端口"></a>2.2 添加监听端口</h4><p><strong>编辑 httpd.conf 配置文件，添加 httpd 监听端口 8088</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf/httpd.conf </span></span><br><span class="line">Listen 80</span><br><span class="line">Listen 8088</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-编辑配置文件"><a href="#2-3-编辑配置文件" class="headerlink" title="2.3 编辑配置文件"></a>2.3 编辑配置文件</h4><p><strong>编辑虚拟主机配置文件 /etc/httpd/conf.d/httpd- vhost.conf →重新启动 httpd 服务。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf.d/httpd-vhosts.conf </span></span><br><span class="line">// 以下4行在前面已添加,可保持不变</span><br><span class="line">&lt;VirtualHost 192.168.1.1:80&gt;</span><br><span class="line">    DocumentRoot /var/www/web1/</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">// 在文件末尾添加以下4行:</span><br><span class="line">&lt;VirtualHost 192.168.1.1:8088&gt;</span><br><span class="line">    DocumentRoot /var/www/web3/</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl restart httpd.service    // 此时重启httpd可能会失败</span></span><br><span class="line">Job <span class="keyword">for</span> httpd.service failed because the control process exited with error code.</span><br><span class="line">See <span class="string">&quot;systemctl status httpd.service&quot;</span> and <span class="string">&quot;journalctl -xe&quot;</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-允许在端口允许服务"><a href="#2-4-允许在端口允许服务" class="headerlink" title="2.4 允许在端口允许服务"></a>2.4 允许在端口允许服务</h4><p><strong>在 http_port_t 端口标签中添加 8088 端口，以允许 http 服务运行在 8088 端口上。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --zone=public --add-port=8088/tcp --permanent </span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># semanage port -a -t http_port_t -p tcp 8088</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-5-在客户端访问站点"><a href="#2-5-在客户端访问站点" class="headerlink" title="2.5 在客户端访问站点"></a>2.5 在客户端访问站点</h4><p><strong>在客户端访问站点。必须在域名或 IP 地址后面加上端口号（使用 80 端口的 Web 站点可省），如，<a target="_blank" rel="noopener" href="http://192.168.1.1:8088/">http://192.168.1.1:8088</a></strong></p>
+<p><img src="../img/apache6.png" alt="1622437968129"></p>
+<p><img src="../img/apache7.png" alt="1622437906965"></p>
+<h4 id="2-6-访问测试"><a href="#2-6-访问测试" class="headerlink" title="2.6 访问测试"></a>2.6 访问测试</h4><p><strong>访问测试。在 Linux/Windows 客户端访问站点时，必须在 IP 地址或域名后面加上端口号（使用 80 端口的Web 站点可省）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># curl -k http://192.168.1.1:80</span></span><br><span class="line">this is port80<span class="string">&#x27;s web</span></span><br><span class="line"><span class="string">[root@localhost ~]# curl -k http://192.168.1.1:8088</span></span><br><span class="line"><span class="string">this is port8088&#x27;</span>s web</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-基于-IP-地址的虚拟主机"><a href="#3-基于-IP-地址的虚拟主机" class="headerlink" title="3. 基于 IP 地址的虚拟主机"></a>3. 基于 IP 地址的虚拟主机</h3><blockquote>
+<p>名称　　　　IP 地址　　端口　　　　域名<br>Web_A　　192.168.1.1　80　　/var/www/web1/<br>Web_D　　192.168.1.2　80　　/var/www/web4/</p>
+</blockquote>
+<h4 id="3-1-绑定-IP-地址"><a href="#3-1-绑定-IP-地址" class="headerlink" title="3.1 绑定 IP 地址"></a>3.1 绑定 IP 地址</h4><p><strong>为服务器上的一块网卡绑定第 2 个 IP 地址→重启网络服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;root@localhost ~]<span class="comment"># vim /etc/sysconfig/network-scripts/ifcfg-ens33 </span></span><br><span class="line">...... // 其它行省略</span><br><span class="line">IPADDR=192.168.1.1</span><br><span class="line">PREFIX=24</span><br><span class="line">IPADDR1=192.168.1.2</span><br><span class="line">PREFIX1=24</span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl restart network</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-2-创建目录和文件"><a href="#3-2-创建目录和文件" class="headerlink" title="3.2 创建目录和文件"></a>3.2 创建目录和文件</h4><p><strong>创建 Web 站点网页文档的主目录和默认首页文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir -p /var/www/web4</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is 192.168.1&#x27;s web&quot; &gt; /var/www/web1/index.html </span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;this is 192.168.2&#x27;s web&quot; &gt; /var/www/web4/index.html </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-编辑配置文件"><a href="#3-3-编辑配置文件" class="headerlink" title="3.3 编辑配置文件"></a>3.3 编辑配置文件</h4><p><strong>编辑虚拟主机配置文件 /etc/httpd/conf.d/httpd-vhost.conf，设置基于 IP 地址的虚拟主机→重新启动 httpd 服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf.d/httpd-vhosts.conf </span></span><br><span class="line">&lt;VirtualHost 192.168.1.1&gt;</span><br><span class="line">    ServerName 192.168.1.1</span><br><span class="line">    DocumentRoot /var/www/web1/</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">&lt;VirtualHost 192.168.1.2&gt;</span><br><span class="line">    ServerName 192.168.1.2</span><br><span class="line">    DocumentRoot /var/www/web4/</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl restart httpd.service </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-4-测试"><a href="#3-4-测试" class="headerlink" title="3.4 测试"></a>3.4 测试</h4><p><strong>测试。在同网段的客户端启动浏览器→在地址栏中先后键入 <a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1</a> 和 <a target="_blank" rel="noopener" href="http://192.168.1.2/">http://192.168.1.2</a> 访问地址→观察各自的页面能否显示</strong></p>
+<p><img src="../img/apache8.png" alt="1622440468608"></p>
+<p><img src="../img/apache.png" alt="1622440532456"></p>
+<h2 id="五、Web-服务的访问控制"><a href="#五、Web-服务的访问控制" class="headerlink" title="五、Web 服务的访问控制"></a>五、Web 服务的访问控制</h2><h3 id="1-基于用户的访问控制"><a href="#1-基于用户的访问控制" class="headerlink" title="1. 基于用户的访问控制"></a>1. 基于用户的访问控制</h3><blockquote>
+<p> 实例：在别名为 “/lt” 的虚拟目录上，配置其只允许 user1 和 user2 等认证用户访问 </p>
+</blockquote>
+<h4 id="1-1-创建用户"><a href="#1-1-创建用户" class="headerlink" title="1.1 创建用户"></a>1.1 创建用户</h4><p><strong>使用 htpasswd 工具创建 user1 用户，并保存在 .ltuser文件中</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># htpasswd -c /etc/httpd/.ltuser user1</span></span><br><span class="line">New password: </span><br><span class="line">Re-type new password: </span><br><span class="line">Adding password <span class="keyword">for</span> user user1</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /etc/httpd/.ltuser </span></span><br><span class="line">user1:$apr1$l9adoPSc<span class="variable">$amIH</span>/S5cGibijjH9GL09Z/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>htpasswd 命令中的 “-c” 选项表示无论认证文件是否存在，都重新写入文件并删除文件中原有的内容，因此，向认证文件中添加第二个用户时，就不要再使用 “-c” 选项了。若要修改 user1 用户的密码，可使用 “htpasswd -m .ltuser user1” 命令实现 </li>
+</ul>
+<h4 id="1-2-创建目录和文件"><a href="#1-2-创建目录和文件" class="headerlink" title="1.2 创建目录和文件"></a>1.2 创建目录和文件</h4><p><strong>创建物理目录路径及用于测试的虚拟目录默认首页文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mkdir -p /xyz/lt</span></span><br><span class="line">[root@localhost ~]<span class="comment"># echo &quot;Welcome to lt&quot; &gt; /xyz/lt/index.html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-3-添加用户认证授权访问"><a href="#1-3-添加用户认证授权访问" class="headerlink" title="1.3 添加用户认证授权访问"></a>1.3 添加用户认证授权访问</h4><p><strong>设置虚拟目录并对其添加用户认证授权访问→重 新启动 httpd 服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/httpd/conf/httpd.conf ……//在文件末尾添加以下各行:</span></span><br><span class="line">Alias /lt <span class="string">&quot;/xyz/lt”                             // 定义虚拟目录的别名为 /lt，物理路径为 /xyz/lt</span></span><br><span class="line"><span class="string">&lt;Directory &quot;</span>/xyz/lt<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    AuthType Basic</span></span><br><span class="line"><span class="string">    AuthName &quot;</span>This is ltuser directory,Please Login:<span class="string">&quot;</span></span><br><span class="line"><span class="string">    AuthUserFile /etc/httpd/.ltuser</span></span><br><span class="line"><span class="string">    Require valid-user</span></span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">[root@localhost ~]# systemctl restart httpd.service</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h4><h3 id="2-基于客户端地址的访问控制"><a href="#2-基于客户端地址的访问控制" class="headerlink" title="2. 基于客户端地址的访问控制"></a>2. 基于客户端地址的访问控制</h3>
       
 
       
@@ -273,7 +434,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          使用MariaDB管理数据库
         
       </div>
     </a>
