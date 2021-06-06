@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>网络配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/05/27/%E4%BD%BF%E7%94%A8Postfix%E4%B8%8EDovecot%E6%94%B6%E5%8F%91%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/index.html">
+  <meta name="description" content="一、架设软路由器实现多子网连通 1. 配置网卡参数按图的IP地址、子网掩码、默认网关等参数配置各网卡 2. 开启 IP 转发功能**在 RHEL7-1 和RHEL 7-2 两台主机上开启 IP 转发功能，以使各主机中的网卡不仅能收发数据包还能转发数据包。过程如下（RHEL7-2上的操作方式相同）: ** 1234&amp;#123;root@rhel7-1 ~]# vim &#x2F;usr&#x2F;lib&#x2F;sysct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络配置">
+<meta property="og:url" content="http://example.com/2021/05/31/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、架设软路由器实现多子网连通 1. 配置网卡参数按图的IP地址、子网掩码、默认网关等参数配置各网卡 2. 开启 IP 转发功能**在 RHEL7-1 和RHEL 7-2 两台主机上开启 IP 转发功能，以使各主机中的网卡不仅能收发数据包还能转发数据包。过程如下（RHEL7-2上的操作方式相同）: ** 1234&amp;#123;root@rhel7-1 ~]# vim &#x2F;usr&#x2F;lib&#x2F;sysct">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-27T13:01:03.288Z">
-<meta property="article:modified_time" content="2021-05-27T13:01:03.288Z">
+<meta property="og:image" content="http://example.com/2021/05/31/img/wlpz1.png">
+<meta property="article:published_time" content="2021-06-01T04:19:20.223Z">
+<meta property="article:modified_time" content="2021-06-01T09:36:52.873Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/31/img/wlpz1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -152,12 +156,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-使用Postfix与Dovecot收发电子邮件" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-网络配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      网络配置
+    </h1>
+  
+
+        
+        <a href="/2021/05/31/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2021-06-01T04:19:20.223Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-31</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <br/>
+
+<h2 id="一、架设软路由器实现多子网连通"><a href="#一、架设软路由器实现多子网连通" class="headerlink" title="一、架设软路由器实现多子网连通"></a>一、架设软路由器实现多子网连通</h2><p><img src="../img/wlpz1.png" alt="1622521437161"></p>
+<h3 id="1-配置网卡参数"><a href="#1-配置网卡参数" class="headerlink" title="1. 配置网卡参数"></a>1. 配置网卡参数</h3><p><strong>按图的IP地址、子网掩码、默认网关等参数配置各网卡</strong></p>
+<h3 id="2-开启-IP-转发功能"><a href="#2-开启-IP-转发功能" class="headerlink" title="2. 开启 IP 转发功能"></a>2. 开启 IP 转发功能</h3><p>**在 RHEL7-1 和RHEL 7-2 两台主机上开启 IP 转发功能，以使各主机中的网卡不仅能收发数据包还能转发数据包。过程如下（RHEL7-2上的操作方式相同）: **</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;root@rhel7-1 ~]<span class="comment"># vim /usr/lib/sysctl.d/00-system.conf </span></span><br><span class="line">......                                                    // 省略若干行</span><br><span class="line">net.ipv4.ip_forward=1                                     // 添加此行或将此行中的 “0” 改为 “1”</span><br><span class="line">[root@rhel7-1 ~]<span class="comment"># sysctl -p /usr/lib/sysctl.d/00-system.conf    // 使修改生效</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-路由器添加静态路由记录"><a href="#3-路由器添加静态路由记录" class="headerlink" title="3. 路由器添加静态路由记录"></a>3. 路由器添加静态路由记录</h3><p><strong>为了实现子网1 与子网3 之间永久生效的双向连通，需要在路由器 RHEL7-1 的 ens38 网卡上和 RHEL7-2 的ens33 网卡上分别添加永久生效的静态路由记录</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@rhel7-1 ~]<span class="comment"># vim /etc/sysconfig/network-scripts/route-ens38</span></span><br><span class="line">192.168.2.0/24 via 192.168.1.2 dev ens38                        // 添加从子网1 到子网3 的路由</span><br><span class="line">[root@rhel7-1 ~]<span class="comment"># systemctl restart network                     // 重启网络服务使配置生效</span></span><br><span class="line">[root@rhel7-2 ~]<span class="comment"># vim /etc/sysconfig/network-scripts/route-ens33</span></span><br><span class="line">10.1.80.0/24 via 192.168.1.1 dev ens33                          // 添加从子网3 到子网1 的路由</span><br><span class="line">[root@rhel7-2 ~]<span class="comment"># systemctl restart network                     // 重启网络服务使配置生效</span></span><br><span class="line">[root@rhel7-2 ~]<span class="comment"># ip route show                                 // 查看RHEL7-2上的路由表信息</span></span><br><span class="line">10.1.80.0/24 via 192.168.1.2 dev ens33 proto static metric 100</span><br><span class="line">192.168.1.0/24 dev ens33 proto kernel scope link src 192.168.1.2 metric 100</span><br><span class="line">192.168.2.0/24 dev ens38 proto kernel scope link src 192.168.2.1 metric 100</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-PC-添加静态路由"><a href="#4-PC-添加静态路由" class="headerlink" title="4. PC 添加静态路由"></a>4. PC 添加静态路由</h3><p>**在 PC1 上添加永久生效的能到达子网2（192.168.1.0/24）和子网3（192.168.2.0/24）的静态路由，在 PC2 上添加永久生效的能到达其他子网的默认路由。 **</p>
+<h3 id="5-验证连通性"><a href="#5-验证连通性" class="headerlink" title="5. 验证连通性"></a>5. 验证连通性</h3><p>**验证连通性。在 PC1 和 PC2 主机上关闭各自的防火墙→使用 ping 命令 ‘’ping” 对方的 IP 地址来测试连通性。如图7-7所示→使用tracert命令跟踪并显示 所经过的路径,如图7-8所示。 **</p>
+
       
 
       
@@ -236,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/27/%E4%BD%BF%E7%94%A8Postfix%E4%B8%8EDovecot%E6%94%B6%E5%8F%91%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/31/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,17 +285,8 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/31/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          网络配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/05/27/%E4%BD%BF%E7%94%A8vsftpd%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/05/27/%E4%BD%BF%E7%94%A8Postfix%E4%B8%8EDovecot%E6%94%B6%E5%8F%91%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
