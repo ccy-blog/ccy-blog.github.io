@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -564,7 +579,7 @@ drwxrwxrwt. root root unconfined_u:object_r:samba_share_t:s0 /usr/share/public/<
 
 
 <h3 id="6-在服务器端编辑配置文件"><a href="#6-在服务器端编辑配置文件" class="headerlink" title="6.  在服务器端编辑配置文件"></a>6.  在服务器端编辑配置文件</h3><p><strong>在服务器端编辑 /etc/hosts 文件，添加本地主机名解析记录，其中的主机名要与 /etc/hostname 文件中的主机名保持一致（本步骤非必作，只是有些客户系统需要作，作了以后能加快访问速度）</strong></p>
-<h3 id="7-windows-客户端的访问测试"><a href="#7-windows-客户端的访问测试" class="headerlink" title="7. windows 客户端的访问测试"></a>7. windows 客户端的访问测试</h3><p>快捷键 <code>win+R</code> 输入 <code>\\192.168.1.2</code><br><img src="../img/samba1.png" alt="1621920124729"></p>
+<h3 id="7-windows-客户端的访问测试"><a href="#7-windows-客户端的访问测试" class="headerlink" title="7. windows 客户端的访问测试"></a>7. windows 客户端的访问测试</h3><p>快捷键 <code>win+R</code> 输入 <code>\\192.168.1.2</code><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/samba1.png" alt="1621920124729"></p>
 <h3 id="8-Linux-客户端的访问测试"><a href="#8-Linux-客户端的访问测试" class="headerlink" title="8. Linux 客户端的访问测试"></a>8. Linux 客户端的访问测试</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum -y install cifs-utils                      // 安装cifs-utils软件包
 [root@localhost ~]# mkdir /smbdata                                 // 创建挂载点目录 
 // 将匿名用户访问的共享目录临时挂载到客户端的/smbdata目录下
@@ -768,7 +783,11 @@ Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)<span aria-hidden="t
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -963,11 +982,23 @@ Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)<span aria-hidden="t
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1000,11 +1031,23 @@ Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)<span aria-hidden="t
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1318,6 +1361,8 @@ Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)<span aria-hidden="t
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

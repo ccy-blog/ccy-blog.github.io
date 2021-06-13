@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/install/">
+                                <span class="chip bg-color">install</span>
+                            </a>
+                        
+                            <a href="/tags/blog/">
+                                <span class="chip bg-color">blog</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/blog/" class="post-category">
+                                blog
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -491,26 +510,26 @@
 
 <h4 id="1-4-2-远程连接Linux实例"><a href="#1-4-2-远程连接Linux实例" class="headerlink" title="1.4.2 远程连接Linux实例"></a>1.4.2 远程连接Linux实例</h4><p>远程连接服务器的方法都很多。当前使用的是阿里云自带的 VNC（Virtual Network Console，虚拟网络控制台）。</p>
 <ul>
-<li><p>第一次登录须修改远程连接（VNC）密码：实例列表 -&gt; 更多 -&gt; 密码/密钥 -&gt; 修改远程连接（VNC）密码：<br><img src="../img/hexoali2.png" alt="1622955700460"></p>
+<li><p>第一次登录须修改远程连接（VNC）密码：实例列表 -&gt; 更多 -&gt; 密码/密钥 -&gt; 修改远程连接（VNC）密码：<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali2.png" alt="1622955700460"></p>
 </li>
-<li><p>进行远程连接：实例列表 -&gt; 选择实例 -&gt; 远程链接：<br><img src="../img/hexoali3.png" alt="1622954831905"></p>
+<li><p>进行远程连接：实例列表 -&gt; 选择实例 -&gt; 远程链接：<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali3.png" alt="1622954831905"></p>
 </li>
-<li><p>输入用户名（root）和密码（root 密码）登录到控制台<br><img src="../img/hexoali4.png" alt="1622956580541"></p>
+<li><p>输入用户名（root）和密码（root 密码）登录到控制台<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali4.png" alt="1622956580541"></p>
 </li>
 </ul>
 <h4 id="1-4-3-配置安全组"><a href="#1-4-3-配置安全组" class="headerlink" title="1.4.3 配置安全组"></a>1.4.3 配置安全组</h4><p>我们需要通过 80 端口访问 nginx 服务，但阿里云没有开启 80 端口的访问权限，所以要手动添加安全组，让相应的端口和 IP 放行。</p>
 <ul>
-<li>控制台 -&gt; 云服务器 ECS -&gt; 网络与安全 -&gt; 安全组 -&gt; 查看安全组列表，没有安全组就创建安全组 -&gt; 入口方向 -&gt; 手动添加：<br><img src="../img/hexoali5.png" alt="1622957810353"></li>
+<li>控制台 -&gt; 云服务器 ECS -&gt; 网络与安全 -&gt; 安全组 -&gt; 查看安全组列表，没有安全组就创建安全组 -&gt; 入口方向 -&gt; 手动添加：<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali5.png" alt="1622957810353"></li>
 </ul>
 <ul>
 <li>在实例列表中为实例添加安全组： 更多 -&gt; 网络和安全组 -&gt; 加入安全组：<br><img src="D:\blog\hexo\blog\source\img\hexoali6.png" alt="1622958378793"></li>
 </ul>
-<h2 id="2-在本地计算机安装Hexo环境"><a href="#2-在本地计算机安装Hexo环境" class="headerlink" title="2. 在本地计算机安装Hexo环境"></a>2. 在本地计算机安装Hexo环境</h2><h3 id="2-1-安装-nodejs"><a href="#2-1-安装-nodejs" class="headerlink" title="2.1 安装 nodejs"></a>2.1 安装 nodejs</h3><p>1. 进入 官网 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载 <strong>nodejs</strong><br><img src="../img/nodejs0.png" alt="nodejs0"><br>2. 打开下载位置，双击 <strong>node—-.msi</strong> 进行安装<br><img src="../img/nodejs00.png" alt="nodejs00"></p>
-<p>3. 一直 Next<br>　选择自动安装一些工具<br><img src="../img/nodejs1.png" alt="nodejs1"></p>
-<p>　安装完成，弹出控制台<br><img src="../img/nodejs2.png" alt="nodejs2"><br>回车继续</p>
-<p>4. 使用 <code>windows + R</code>  输出 <code>cmd</code> 启动命令行<br>　使用命令 <code>node -v</code>  、<code>nmp -v</code>  查看版本信息<br><img src="../img/nodejs4.png" alt="nodejs3"><br>　如果失败则重启电脑再次输入</p>
-<p>5. 输入命令 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code> 安装淘宝的源 cnpm<br><img src="../img/cnpm1.png" alt="cnpm1"></p>
-<p>　输入命令 <code>cnpm -v</code> 查看安装信息<br><img src="../img/cnpm2.png" alt="cnpm2"></p>
+<h2 id="2-在本地计算机安装Hexo环境"><a href="#2-在本地计算机安装Hexo环境" class="headerlink" title="2. 在本地计算机安装Hexo环境"></a>2. 在本地计算机安装Hexo环境</h2><h3 id="2-1-安装-nodejs"><a href="#2-1-安装-nodejs" class="headerlink" title="2.1 安装 nodejs"></a>2.1 安装 nodejs</h3><p>1. 进入 官网 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 下载 <strong>nodejs</strong><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nodejs0.png" alt="nodejs0"><br>2. 打开下载位置，双击 <strong>node—-.msi</strong> 进行安装<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nodejs00.png" alt="nodejs00"></p>
+<p>3. 一直 Next<br>　选择自动安装一些工具<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nodejs1.png" alt="nodejs1"></p>
+<p>　安装完成，弹出控制台<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nodejs2.png" alt="nodejs2"><br>回车继续</p>
+<p>4. 使用 <code>windows + R</code>  输出 <code>cmd</code> 启动命令行<br>　使用命令 <code>node -v</code>  、<code>nmp -v</code>  查看版本信息<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nodejs4.png" alt="nodejs3"><br>　如果失败则重启电脑再次输入</p>
+<p>5. 输入命令 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code> 安装淘宝的源 cnpm<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/cnpm1.png" alt="cnpm1"></p>
+<p>　输入命令 <code>cnpm -v</code> 查看安装信息<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/cnpm2.png" alt="cnpm2"></p>
 <h3 id="2-2-安装-hexo-框架"><a href="#2-2-安装-hexo-框架" class="headerlink" title="2.2 安装 hexo 框架"></a>2.2 安装 hexo 框架</h3><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">windows 命令
 	创建目录                 md 目录
 	显示指定工作目录下的内容    chdir 
@@ -527,25 +546,33 @@ hexo 语法
 
 
 
-<p>1. 输入命令 <code>cnpm install -g hexo-cli</code> 安装 hexo 框架<br><img src="../img/hexo1.png" alt="hexo1"></p>
-<p>2. 输入命令 <code>hexo -v</code> 查看版本信息<br><img src="../img/hexo2.png" alt="hexo2"></p>
-<h3 id="2-3-安装-git"><a href="#2-3-安装-git" class="headerlink" title="2.3 安装 git"></a>2.3 安装 git</h3><p>1. 进入官网 <a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a><br><img src="../img/git0.png"></p>
-<p>2. 下载<br><img src="../img/git1.png"></p>
-<p>3. 打开下载位置，双击 <strong>Git—-bit.exe</strong> 进行安装<br><img src="../img/git2.png"></p>
+<p>1. 输入命令 <code>cnpm install -g hexo-cli</code> 安装 hexo 框架<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo1.png" alt="hexo1"></p>
+<p>2. 输入命令 <code>hexo -v</code> 查看版本信息<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo2.png" alt="hexo2"></p>
+<p>3. 创建目录 blog，命令： <code>md 目录</code><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo3.png"></p>
+<p>2. 执行命令 <code>hexo init</code> 会在当前目录下生成 hexo 项目 </p>
+<p>　生成时卡住输入回车键即可解决</p>
+<p>　出现  <font color="green"><code>INFO </code></font><code>Start blogging with Hexo!</code> 代表生成成功 </p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo4.png" alt="hexo4"></p>
+<p>3. 执行命令 <code>hexo s</code> 或 <code>hexo server</code> 开启 hexo 服务<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo5.png" alt="hexo5"></p>
+<p>　使用路径 <code> localhost:4000</code> 即可访问<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo6.png" alt="hexo6"></p>
+<p>　执行命令 <code>ctrl + c</code> 关闭服务即可退出<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo7.png" alt="hexo7"></p>
+<h3 id="2-3-安装-git"><a href="#2-3-安装-git" class="headerlink" title="2.3 安装 git"></a>2.3 安装 git</h3><p>1. 进入官网 <a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git0.png"></p>
+<p>2. 下载<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git1.png"></p>
+<p>3. 打开下载位置，双击 <strong>Git—-bit.exe</strong> 进行安装<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git2.png"></p>
 <p>4. 安装 <strong>Git</strong> 工具</p>
-<p>　1.  以下安装步骤均为默认选项，不爱折腾的伙伴们可以直接 Next 到 Finsh 完成安装。<br>　<img src="../img/git3.png" alt="1621504212582"></p>
-<p>　2.  点击 Next , 选择组件<br>　<img src="../img/git4.png"></p>
-<p>　3.  点击 Next，选择默认编辑器<br>　<img src="../img/git5.png"></p>
-<p>　4.  点击 Next，设置分支名称<br>　<img src="../img/git6.png"></p>
-<p>　5.  点击 Next，配置 PATH 环境<br>　<img src="../img/git7.png"></p>
-<p>　6.  点击 Next，选择 HTTPS 传输后端<br>　<img src="../img/git8.png"><br>　<br>　7.  点击 Next，配置行结束转换<br>　<img src="../img/git10.png"></p>
-<p>　8.  点击 Next，配置终端模拟器与 Git Bash 一起使用<br>　<img src="../img/git9.png"></p>
-<p>　9.  点击 Next，配置 Git 默认行为<br>　<img src="../img/git11.png"></p>
-<p>　10.   点击 Next，选择凭据助手<br>　<img src="../img/git12.png"></p>
-<p>　11.   点击 Next，配置额外选项<br>　<img src="../img/git13.png"></p>
+<p>　1.  以下安装步骤均为默认选项，不爱折腾的伙伴们可以直接 Next 到 Finsh 完成安装。<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git3.png" alt="1621504212582"></p>
+<p>　2.  点击 Next , 选择组件<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git4.png"></p>
+<p>　3.  点击 Next，选择默认编辑器<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git5.png"></p>
+<p>　4.  点击 Next，设置分支名称<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git6.png"></p>
+<p>　5.  点击 Next，配置 PATH 环境<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git7.png"></p>
+<p>　6.  点击 Next，选择 HTTPS 传输后端<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git8.png"><br>　<br>　7.  点击 Next，配置行结束转换<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git10.png"></p>
+<p>　8.  点击 Next，配置终端模拟器与 Git Bash 一起使用<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git9.png"></p>
+<p>　9.  点击 Next，配置 Git 默认行为<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git11.png"></p>
+<p>　10.   点击 Next，选择凭据助手<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git12.png"></p>
+<p>　11.   点击 Next，配置额外选项<br>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git13.png"></p>
 <p>　12. 点击 Install 安装</p>
-<p>5. 打开 <strong>Git Bash</strong><br>　在任意目录下鼠标右键即可看到有 <strong>Git GUI Here</strong> 与 <strong>Git Bash Here</strong> 两个选项。<br><img src="../img/git14.png"></p>
-<p>　点击 <strong>Git Bash Here</strong> 弹出命令行窗口，说明安装成功<br><img src="../img/git15.png"></p>
+<p>5. 打开 <strong>Git Bash</strong><br>　在任意目录下鼠标右键即可看到有 <strong>Git GUI Here</strong> 与 <strong>Git Bash Here</strong> 两个选项。<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git14.png"></p>
+<p>　点击 <strong>Git Bash Here</strong> 弹出命令行窗口，说明安装成功<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/git15.png"></p>
 <h2 id="3-配置环境"><a href="#3-配置环境" class="headerlink" title="3. 配置环境"></a>3. 配置环境</h2><h3 id="3-1-安装-nginx-作-Web-服务器"><a href="#3-1-安装-nginx-作-Web-服务器" class="headerlink" title="3.1 安装 nginx 作 Web 服务器"></a>3.1 安装 nginx 作 Web 服务器</h3><p>1. 安装 nginx 依赖环境 </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum install gcc-c++
 [root@localhost ~]# yum install -y pcre pcre-devel
@@ -660,7 +687,7 @@ $ chmod 600 ~/.ssh/id_rsa<span aria-hidden="true" class="line-numbers-rows"><spa
 
 <p>3. 使用 FTP 工具将本机计算机生成的公钥上传到服务器的 ~/.ssh 目录下</p>
 <p><a target="_blank" rel="noopener" href="https://www.filezilla.cn/download/client">FTP 工具下载（ FileZilla（Windows版本） ）</a></p>
-<p><img src="../img/hexoali7.png" alt="1622965990189"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali7.png" alt="1622965990189"></p>
 <p>4. 在服务器新建 authorized_keys 文件，并设置文件权限 </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[git@localhost ~]$ cd ~/.ssh
 [git@localhost ~]$ cp id_rsa.pub authorized_keys
@@ -720,54 +747,18 @@ $ git config --global user.name "用户名"<span aria-hidden="true" class="line-
 $ hexo g
 $ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>　部署后便可以通过 <code>公网 IP</code> 访问我的博客主页。</p>
 <h2 id="5-域名绑定"><a href="#5-域名绑定" class="headerlink" title="5. 域名绑定"></a>5. 域名绑定</h2><p>云解析 DNS -&gt; 域名解析 -&gt; 选择域名 -&gt; 解析设置：</p>
-<p><img src="../img/hexoali8.png" alt="1622971358788"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexoali8.png" alt="1622971358788"></p>
 <p>一段时间后便能通过域名访问。</p>
-<p>1. 创建目录 blog <code>md 目录</code><br><img src="../img/hexo3.png"></p>
-<p>2. 执行命令 <code>hexo init</code> 会在当前目录下生成 hexo 项目 </p>
-<p>　生成时卡住输入回车键即可解决</p>
-<p>　出现  <font color="green"><code>INFO </code></font><code>Start blogging with Hexo!</code> 代表生成成功 </p>
-<p>　<img src="../img/hexo4.png" alt="hexo4"></p>
-<p>3. 执行命令 <code>hexo s</code> 或 <code>hexo server</code> 开启 hexo 服务<br><img src="../img/hexo5.png" alt="hexo5"></p>
-<p>　使用路径 <code> localhost:4000</code> 即可访问<br>　<img src="../img/hexo6.png" alt="hexo6"></p>
-<p>　执行命令 <code>ctrl + c</code> 关闭服务即可退出<br>　<img src="../img/hexo7.png" alt="hexo7"></p>
-<p>4. 在 github 中新建一个仓库<br><img src="../img/github1.png" alt="github1"></p>
-<p>　输入仓库名必须为 <font color="red">用户名.github.io</font><br>　<img src="../img/github2.png" alt="github2"><br>　点击 create repository 创建仓库</p>
-<p>　把生成的路径复制下来后续配置文件中要用<br>　<img src="../img/github3.png" alt="github3"></p>
-<p>​       </p>
-<p>5. 安装插件 <code>cnpm install --save hexo-deployer-git</code><br><img src="../img/hexo8.png" alt="hexo8"></p>
-<p>​       </p>
-<p>6. 使用记事本打开 hexo 项目目录下的配置文件 <code>_config.yml</code> </p>
-<p>　修改配置文件中 deploy 项
-　</p>
-<pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">deploy:
-type: 'git'
-repo: https://github.com/ccy-blog/ccy-blog.github.io.git
-branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>repo: 后面为创建 github 仓库时生成的路径</p>
-<p>7. 设置 用户名 和 邮件<br>　<code>git config --global user.email "邮箱"</code><br>　<code>git config --global user.name "用户名"</code></p>
-<p>　<img src="../img/hexo9.png"></p>
-<h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4. 运行"></a>4. 运行</h2><p>1. 使用 <code>hexo clean</code> 清楚缓存<br><img src="../img/hexo10.png"></p>
-<p>2. 使用 <code>hexo g</code> 或 <code>hexo generate</code> 生成静态文件<br><img src="../img/hexo11.png"></p>
-<p>3. 使用 <code>hexo d</code> 或 <code>hexo deploy</code> 部署到远程站点<br><img src="../img/hexo12.png"></p>
-<p>　1. <strong>出现错误：</strong> <font color="red">fatal: unable to access “xxx‘‘: OpenSSL SSL_read:Connection was reset, errno 10054</font></p>
-<p>　　使用 <code>git config --global http.sslVerify "false"</code>  解决</p>
-<p>　　产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
-<p>　　解决办法：解除ssl验证</p>
-<p>　2. <strong>出现错误：</strong> <font color="red">Failed to connect to github.com port 443: Timed out</font></p>
-<p>　　网络问题，等会儿再上传，因为 github 是外网。</p>
-<p>4. 使用路径 <code>用户名.github.io</code> 即可访问自己的博客 </p>
-<p><img src="../img/hexo13.png" alt="1621566839396"></p>
-<h2 id="5-更换博客主题"><a href="#5-更换博客主题" class="headerlink" title="5. 更换博客主题"></a>5. 更换博客主题</h2><ul>
+<h2 id="6-更换博客主题"><a href="#6-更换博客主题" class="headerlink" title="6. 更换博客主题"></a>6. 更换博客主题</h2><ul>
 <li>找到自己喜欢的主题，下载下来放到 hexo 项目的 <code>themes/</code> 目录下</li>
 </ul>
 <blockquote>
 <p>我临时使用的 <code>https://github.com/litten/hexo-theme-yilia</code> 这个主题</p>
 </blockquote>
-<p>　在目录 <code>themes/</code> 下右键鼠标打开 Git Bash 输入指令 <code>git clone 地址</code> 回车进行下载<img src="../img/hexo15.png" alt="1621570232717"><br>　<br>　下载完成后在该目录下复制主题名</p>
-<p>　<img src="../img/hexo14.png" alt="1621567563793"></p>
+<p>　在目录 <code>themes/</code> 下右键鼠标打开 Git Bash 输入指令 <code>git clone 地址</code> 回车进行下载<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo15.png" alt="1621570232717"><br>　<br>　下载完成后在该目录下复制主题名</p>
+<p>　<img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/hexo14.png" alt="1621567563793"></p>
 <ul>
 <li>修改 <code>_config.yml</code> 配置文件内容</li>
 </ul>
@@ -836,7 +827,15 @@ branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><s
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/install/">
+                                    <span class="chip bg-color">install</span>
+                                </a>
+                            
+                                <a href="/tags/blog/">
+                                    <span class="chip bg-color">blog</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1031,11 +1030,23 @@ branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><s
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1068,11 +1079,23 @@ branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><s
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1386,6 +1409,8 @@ branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

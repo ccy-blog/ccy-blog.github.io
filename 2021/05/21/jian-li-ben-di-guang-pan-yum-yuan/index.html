@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -471,7 +486,8 @@
             <div id="articleContent">
                 <br>
 
-<h2 id="一、-将CentOS安装光盘放入光驱并挂载"><a href="#一、-将CentOS安装光盘放入光驱并挂载" class="headerlink" title="一、 将CentOS安装光盘放入光驱并挂载"></a>一、 将CentOS安装光盘放入光驱并挂载</h2><h3 id="1-将RHE-L7-安装光盘放入光驱"><a href="#1-将RHE-L7-安装光盘放入光驱" class="headerlink" title="1.  将RHE L7 安装光盘放入光驱"></a>1.  将RHE L7 安装光盘放入光驱</h3><p><img src="../img/yum1.png" alt="1621736117881"></p>
+<h2 id="一、安装光盘并挂载"><a href="#一、安装光盘并挂载" class="headerlink" title="一、安装光盘并挂载"></a>一、安装光盘并挂载</h2><p><strong>将CentOS安装光盘放入光驱并挂载</strong></p>
+<h3 id="1-将-RHEL7-安装光盘放入光驱"><a href="#1-将-RHEL7-安装光盘放入光驱" class="headerlink" title="1. 将 RHEL7 安装光盘放入光驱"></a>1. 将 RHEL7 安装光盘放入光驱</h3><p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/yum1.png" alt="1621736117881"></p>
 <h3 id="2-挂载"><a href="#2-挂载" class="headerlink" title="2. 挂载"></a>2. 挂载</h3><p>1.  创建 /cdrom 目录<br>2. 把光盘 cdrom 挂载到 /cdrom 下</p>
 <p>执行命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# mkdir /cdrom					 
@@ -480,14 +496,16 @@ mount: /dev/sr0 写保护，将以只读方式挂载<span aria-hidden="true" cla
 
 
 
-<h2 id="二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到-cdrom-目录"><a href="#二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到-cdrom-目录" class="headerlink" title="二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到 /cdrom 目录"></a>二、设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到 <code>/cdrom</code> 目录</h2><ul>
+<h2 id="二、设置启动时自动挂载"><a href="#二、设置启动时自动挂载" class="headerlink" title="二、设置启动时自动挂载"></a>二、设置启动时自动挂载</h2><p><strong>设置在系统启动时自动将光驱中的CentOS系统映像文件挂载到 <code>/cdrom</code> 目录</strong></p>
+<ul>
 <li>在文件 /etc/fstab 里添加内容 <code>/dev/sr0 /mnt iso9660 defaults,ro 0 0</code></li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# echo "/dev/sr0 /cdrom iso9660 defaults,ro 0 0" &gt;&gt; /etc/fstab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<h2 id="三、用yum-config-manager命令生成一个yum源的模板文件cdrom-repo"><a href="#三、用yum-config-manager命令生成一个yum源的模板文件cdrom-repo" class="headerlink" title="三、用yum-config-manager命令生成一个yum源的模板文件cdrom.repo"></a>三、用yum-config-manager命令生成一个yum源的模板文件cdrom.repo</h2><p>1. 备份操作系统默认的源</p>
+<h2 id="三、生成模板文件"><a href="#三、生成模板文件" class="headerlink" title="三、生成模板文件"></a>三、生成模板文件</h2><p><strong>用yum-config-manager命令生成一个yum源的模板文件cdrom.repo</strong></p>
+<p>1. 备份操作系统默认的源</p>
 <p>2. 生成文件</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# mkdir /etc/yum.repos.d/repo_bak
 [root@localhost ~]# mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/repo_bak/
@@ -502,10 +520,12 @@ enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 
 
 
-<h2 id="四、-将自动生成的模板文件-etc-yum-repos-d-cdrom-repo-编辑如下"><a href="#四、-将自动生成的模板文件-etc-yum-repos-d-cdrom-repo-编辑如下" class="headerlink" title="四、 将自动生成的模板文件/etc/yum.repos.d/cdrom.repo 编辑如下:"></a>四、 将自动生成的模板文件/etc/yum.repos.d/cdrom.repo 编辑如下:</h2><p>执行命令 <code>ls /cdrom</code> 复制文件名 <code>RPM-GPG-KEY-CentOS-7</code></p>
+<h2 id="四、编辑生成的模板文件"><a href="#四、编辑生成的模板文件" class="headerlink" title="四、编辑生成的模板文件"></a>四、编辑生成的模板文件</h2><p>**将自动生成的模板文件/etc/yum.repos.d/cdrom.repo 编辑如下: **</p>
+<p>执行命令 <code>ls /cdrom</code> 复制文件名 <code>RPM-GPG-KEY-CentOS-7</code></p>
 <p>执行命令 <code>vim /etc/yum.repos.d/cdrom.repo </code> 编辑如下</p>
-<p><img src="../img/yum2.png" alt="1621742178492"></p>
-<h2 id="五、导入公钥文件-以校验GPG签名-用来验证要安装的包是不是RedHat官方的-→查看系统中所有的yum资源库配置信息"><a href="#五、导入公钥文件-以校验GPG签名-用来验证要安装的包是不是RedHat官方的-→查看系统中所有的yum资源库配置信息" class="headerlink" title="五、导入公钥文件,以校验GPG签名(用来验证要安装的包是不是RedHat官方的)→查看系统中所有的yum资源库配置信息"></a>五、导入公钥文件,以校验GPG签名(用来验证要安装的包是不是RedHat官方的)→查看系统中所有的yum资源库配置信息</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# rpm --import /cdrom/RPM-GPG-KEY-CentOS-7
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/yum2.png" alt="1621742178492"></p>
+<h2 id="五、导入公钥文件"><a href="#五、导入公钥文件" class="headerlink" title="五、导入公钥文件"></a>五、导入公钥文件</h2><p><strong>导入公钥文件,以校验GPG签名（用来验证要安装的包是不是RedHat官方的）→ 查看系统中所有的yum资源库配置信息</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# rpm --import /cdrom/RPM-GPG-KEY-CentOS-7
 [root@localhost ~]# yum repolist
 已加载插件：fastestmirror, langpacks
 Loading mirror speeds from cached hostfile
@@ -518,7 +538,8 @@ repolist: 4,070<span aria-hidden="true" class="line-numbers-rows"><span></span><
 
 
 
-<h2 id="六、-清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息"><a href="#六、-清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息" class="headerlink" title="六、 清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息"></a>六、 清除旧有的yum源缓存→重新缓存本地光盘yum源中的软件包信息</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum clean all
+<h2 id="六、重新缓存源中的软件包信息"><a href="#六、重新缓存源中的软件包信息" class="headerlink" title="六、重新缓存源中的软件包信息"></a>六、重新缓存源中的软件包信息</h2><p><strong>清除旧有的yum源缓存 → 重新缓存本地光盘yum源中的软件包信息</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum clean all
 已加载插件：fastestmirror, langpacks
 正在清理软件源： cdrom
 Cleaning up list of fastest mirrors
@@ -534,11 +555,12 @@ cdrom                                                               | 3.6 kB  00
 
 
 
-<h2 id="七、-验证yum源是否可用。下面使用命令行安装httpd-服务软件包如下"><a href="#七、-验证yum源是否可用。下面使用命令行安装httpd-服务软件包如下" class="headerlink" title="七、 验证yum源是否可用。下面使用命令行安装httpd 服务软件包如下"></a>七、 验证yum源是否可用。下面使用命令行安装httpd 服务软件包如下</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum -y install httpd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="七、验证"><a href="#七、验证" class="headerlink" title="七、验证"></a>七、验证</h2><p><strong>验证yum源是否可用。下面使用命令行安装httpd 服务软件包如下</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# yum -y install httpd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<p><img src="../img/yum3.png" alt="1621743120528"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/yum3.png" alt="1621743120528"></p>
 
                 
             </div>
@@ -602,7 +624,11 @@ cdrom                                                               | 3.6 kB  00
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -797,11 +823,27 @@ cdrom                                                               | 3.6 kB  00
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/blog/" class="post-category">
+                                    blog
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/install/">
+                        <span class="chip bg-color">install</span>
+                    </a>
+                    
+                    <a href="/tags/blog/">
+                        <span class="chip bg-color">blog</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -834,11 +876,23 @@ cdrom                                                               | 3.6 kB  00
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1152,6 +1206,8 @@ cdrom                                                               | 3.6 kB  00
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

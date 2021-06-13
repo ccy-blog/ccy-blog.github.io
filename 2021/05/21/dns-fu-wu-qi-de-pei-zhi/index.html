@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -496,12 +511,13 @@
 <blockquote>
 <p>实例：搭建一台授权DNS服务器，该服务器能访问互联网中其他DNS服务器，能解析内网搭建的所有服务器的域名，并通过配置转发地址使内网的用户使用域名访问外网的服务器。</p>
 </blockquote>
-<p><img src="../img/dns1.png" alt="1622097501399"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dns1.png" alt="1622097501399"></p>
 <h2 id="二、授权-DNS-服务器的配置"><a href="#二、授权-DNS-服务器的配置" class="headerlink" title="二、授权 DNS 服务器的配置"></a>二、授权 DNS 服务器的配置</h2><h3 id="1-配置网络参数"><a href="#1-配置网络参数" class="headerlink" title="1.  配置网络参数"></a>1.  配置网络参数</h3><p>**以 root 用户身份登录 RHEL7 系统→配置 DNS 服务器网卡的 IP 地址为 192.168.8.1/24、主机名为dns1.xyz.edu **</p>
 <p>编辑-&gt;虚拟网络编辑器-&gt;更改设置-&gt;添加网络-&gt;添加网络-&gt;修改子网 IP</p>
-<p><img src="../img/dhcp0.png" alt="1621988717997"><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\1622099016595.png" alt="1622099016595"></p>
-<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="../img/dhcp01.png" alt="1621989008068"></p>
-<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="../img/dhcp1.png" alt="1621952959542"><br><img src="../img/dhcp2.png" alt="1621953070703"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dns2.png" alt="1622099016595"></p>
+<p>虚拟机 -&gt; 设置 -&gt; 硬件 -&gt; 网络适配器 -&gt; 网络连接 -&gt; NAT</p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dns3.png" alt="image-20210613145835368"></p>
+<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dns4.png" alt="image-20210613151142807"><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dns5.png" alt="1621953070703"></p>
 <h3 id="2-安装软件包"><a href="#2-安装软件包" class="headerlink" title="2. 安装软件包"></a>2. 安装软件包</h3><p><strong>安装 Unbound 软件包→启动和开机自动启动 Unbound 服务。</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns1 ~]# mount /dev/cdrom /mnt
 [root@dns1 ~]# rpm -ivh /mnt/Packages/unbound-1.4.20-28.el7.x86_64.rpm
@@ -656,7 +672,6 @@ xyz.edu	mail exchanger = 5 mail.xyz.edu.
 &gt; exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-
                 
             </div>
             <hr/>
@@ -719,7 +734,11 @@ xyz.edu	mail exchanger = 5 mail.xyz.edu.
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -914,11 +933,23 @@ xyz.edu	mail exchanger = 5 mail.xyz.edu.
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -951,11 +982,27 @@ xyz.edu	mail exchanger = 5 mail.xyz.edu.
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category">
+                                    Markdown
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1269,6 +1316,8 @@ xyz.edu	mail exchanger = 5 mail.xyz.edu.
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

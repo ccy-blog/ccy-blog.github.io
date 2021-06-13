@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -489,7 +504,7 @@
 <li><p>查看 httpd 运行的端口<br>　<code> ss -nutap | grep httpd</code></p>
 </li>
 </ul>
-<h3 id="3-Apache-服务的测试"><a href="#3-Apache-服务的测试" class="headerlink" title="3. Apache 服务的测试"></a>3. Apache 服务的测试</h3><p><strong>Apache服务启动后，可以在浏览器里输入以下地址，若可看到默认首 页，则工作正常。</strong><br><a target="_blank" rel="noopener" href="http://ip/">http://ip</a> 或者 <a target="_blank" rel="noopener" href="http://127.0.0.1,该页面实际在/">http://127.0.0.1，该页面实际在</a> /var/www/error/noindex.html<br><img src="../img/apache1.png" alt="1622122974146"></p>
+<h3 id="3-Apache-服务的测试"><a href="#3-Apache-服务的测试" class="headerlink" title="3. Apache 服务的测试"></a>3. Apache 服务的测试</h3><p><strong>Apache服务启动后，可以在浏览器里输入以下地址，若可看到默认首 页，则工作正常。</strong><br><a target="_blank" rel="noopener" href="http://ip/">http://ip</a> 或者 <a target="_blank" rel="noopener" href="http://127.0.0.1,该页面实际在/">http://127.0.0.1，该页面实际在</a> /var/www/error/noindex.html<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache1.png" alt="1622122974146"></p>
 <h2 id="二、搭建-Web-主服务器"><a href="#二、搭建-Web-主服务器" class="headerlink" title="二、搭建 Web 主服务器"></a>二、搭建 Web 主服务器</h2><h3 id="1-修改主配置文件"><a href="#1-修改主配置文件" class="headerlink" title="1. 修改主配置文件"></a>1. 修改主配置文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# vim /etc/httpd/conf/httpd.conf
 ServerRoot "/etc/httpd"         // 31行，设置 Apache 的根目录为 /etc/httpd
 Listen 80                       // 42行，设置 httpd 监听端口 80
@@ -516,7 +531,7 @@ Redirecting to /bin/systemctl restart httpd.service<span aria-hidden="true" clas
 
 
 
-<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1”,便/">http://192.168.1.1”，便</a> 可访问首页。</strong><br><img src="../img/apache2.png" alt="1622125749966"></p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1”,便/">http://192.168.1.1”，便</a> 可访问首页。</strong><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache2.png" alt="1622125749966"></p>
 <h2 id="三、使用虚拟目录建子网站"><a href="#三、使用虚拟目录建子网站" class="headerlink" title="三、使用虚拟目录建子网站"></a>三、使用虚拟目录建子网站</h2><p><strong>虚拟目录有以下优点。</strong><br>　便于访问。<br>　便于移动站点中的目录。<br>　能灵活加大磁盘空间。<br>　安全性好。<br><strong>使用Alias选项可以创建虚拟目录。</strong></p>
 <blockquote>
 </blockquote>
@@ -547,7 +562,7 @@ restorecon reset /xyz/rjgc/index.html context unconfined_u:object_r:default_t:s0
 
 
 <h3 id="4-重新启动服务"><a href="#4-重新启动服务" class="headerlink" title="4. 重新启动服务"></a>4. 重新启动服务</h3><p>执行指令：<code>systemctl restart httpd.service </code></p>
-<h3 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1/rjgcx%E2%80%9D">http://192.168.1.1/rjgcx”</a> 便可访问</strong><br><img src="../img/apache3.png" alt="1622174001048"></p>
+<h3 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h3><p><strong>测试。在浏览器地址栏中输入“<a target="_blank" rel="noopener" href="http://192.168.1.1/rjgcx%E2%80%9D">http://192.168.1.1/rjgcx”</a> 便可访问</strong><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache3.png" alt="1622174001048"></p>
 <h2 id="四、使用虚拟主机建立多个网站"><a href="#四、使用虚拟主机建立多个网站" class="headerlink" title="四、使用虚拟主机建立多个网站"></a>四、使用虚拟主机建立多个网站</h2><blockquote>
 <ol>
 <li>基于名称虚主机：                     一个网卡    一个 IP    多个域名    多个网站 </li>
@@ -632,8 +647,8 @@ success
 
 
 <h4 id="2-5-在客户端访问站点"><a href="#2-5-在客户端访问站点" class="headerlink" title="2.5 在客户端访问站点"></a>2.5 在客户端访问站点</h4><p><strong>在客户端访问站点。必须在域名或 IP 地址后面加上端口号（使用 80 端口的 Web 站点可省），如，<a target="_blank" rel="noopener" href="http://192.168.1.1:8088/">http://192.168.1.1:8088</a></strong></p>
-<p><img src="../img/apache6.png" alt="1622437968129"></p>
-<p><img src="../img/apache7.png" alt="1622437906965"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache6.png" alt="1622437968129"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache7.png" alt="1622437906965"></p>
 <h4 id="2-6-访问测试"><a href="#2-6-访问测试" class="headerlink" title="2.6 访问测试"></a>2.6 访问测试</h4><p><strong>访问测试。在 Linux/Windows 客户端访问站点时，必须在 IP 地址或域名后面加上端口号（使用 80 端口的Web 站点可省）</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# curl -k http://192.168.1.1:80
 this is port80's web
@@ -678,8 +693,8 @@ PREFIX1=24
 
 
 <h4 id="3-4-测试"><a href="#3-4-测试" class="headerlink" title="3.4 测试"></a>3.4 测试</h4><p><strong>测试。在同网段的客户端启动浏览器→在地址栏中先后键入 <a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1</a> 和 <a target="_blank" rel="noopener" href="http://192.168.1.2/">http://192.168.1.2</a> 访问地址→观察各自的页面能否显示</strong></p>
-<p><img src="../img/apache8.png" alt="1622440468608"></p>
-<p><img src="../img/apache.png" alt="1622440532456"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache8.png" alt="1622440468608"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/apache.png" alt="1622440532456"></p>
 <h2 id="五、Web-服务的访问控制"><a href="#五、Web-服务的访问控制" class="headerlink" title="五、Web 服务的访问控制"></a>五、Web 服务的访问控制</h2><h3 id="1-基于用户的访问控制"><a href="#1-基于用户的访问控制" class="headerlink" title="1. 基于用户的访问控制"></a>1. 基于用户的访问控制</h3><blockquote>
 <p> 实例：在别名为 “/lt” 的虚拟目录上，配置其只允许 user1 和 user2 等认证用户访问 </p>
 </blockquote>
@@ -776,7 +791,11 @@ Alias /lt "/xyz/lt”                             // 定义虚拟目录的别名
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -971,11 +990,23 @@ Alias /lt "/xyz/lt”                             // 定义虚拟目录的别名
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1008,11 +1039,27 @@ Alias /lt "/xyz/lt”                             // 定义虚拟目录的别名
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/blog/" class="post-category">
+                                    blog
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/install/">
+                        <span class="chip bg-color">install</span>
+                    </a>
+                    
+                    <a href="/tags/blog/">
+                        <span class="chip bg-color">blog</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1326,6 +1373,8 @@ Alias /lt "/xyz/lt”                             // 定义虚拟目录的别名
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

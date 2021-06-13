@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -499,7 +514,7 @@ drwxr-xr-x.    2 nfsnobody root    24 5月  24 08:38 nfsfile<span aria-hidden="t
 <li>配置行格式：被共享目录的绝对路径 客户端1(权限参数) 客户端2(权限参数) …… </li>
 </ul>
 <p><strong>格式说明:</strong><br>① 同一共享目录的客户端(权限参数)可以有多个(以空格隔开);<br>② “客户端”的指定方式有以下几种:<br>　客户端的IP地址：如，192.168.0.100。<br>　客户端的IP网段：如，192.168.1.0/24或192.168.1.0/255.255.255.0。<br>　可解析的主机名/完全合格域名：如，nfs.xyz.com、localhost等(指定的 主机名或域名必须在/etc/hosts文件或DNS服务器中能解析出IP地址)。<br>　可解析的特定子域中的所有主机:如，* .xyz.com、server[1-30].xyz.com。<br>　所有主机：*<br>③<font color="red">“权限参数”必须用英文的圆括号括起,且与前面的客户端”符号不能留空</font>;圆括号内的“权限参数”可以有多个,前后两个用英文逗号隔开。 </p>
-<p><img src="../img/nfs1.png" alt="1621817943456"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nfs1.png" alt="1621817943456"></p>
 <h3 id="1-4-启动NFS服务"><a href="#1-4-启动NFS服务" class="headerlink" title="1.4  启动NFS服务"></a>1.4  启动NFS服务</h3><p><strong>启动NFS服务并设置开机自动启动</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~] systemctl start nfs-server.service
 [root@localhost ~] systemctl enable nfs-server.service
@@ -519,7 +534,8 @@ success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 
 
-<h2 id="2、使用-Linux-客户端访问NFS服务器的共享文件"><a href="#2、使用-Linux-客户端访问NFS服务器的共享文件" class="headerlink" title="2、使用 Linux 客户端访问NFS服务器的共享文件"></a>2、使用 Linux 客户端访问NFS服务器的共享文件</h2><h3 id="2-1-安装软件包"><a href="#2-1-安装软件包" class="headerlink" title="2.1  安装软件包"></a>2.1  安装软件包</h3><p><strong>确保 Linux 系统的 NFS 客户端已安装 <code>rpcbind</code> 软件包，并启动了其服务（RHEL7中已默认安装并启动，客户端不需要启动 nfs 服务）。</strong></p>
+<h2 id="2、使用-Linux-客户端访问"><a href="#2、使用-Linux-客户端访问" class="headerlink" title="2、使用 Linux 客户端访问"></a>2、使用 Linux 客户端访问</h2><p><strong>使用 Linux 客户端访问 NFS 服务器的共享文件</strong></p>
+<h3 id="2-1-安装软件包"><a href="#2-1-安装软件包" class="headerlink" title="2.1  安装软件包"></a>2.1  安装软件包</h3><p><strong>确保 Linux 系统的 NFS 客户端已安装 <code>rpcbind</code> 软件包，并启动了其服务（RHEL7中已默认安装并启动，客户端不需要启动 nfs 服务）。</strong></p>
 <h3 id="2-2-查看共享目录"><a href="#2-2-查看共享目录" class="headerlink" title="2.2  查看共享目录"></a>2.2  查看共享目录</h3><p><strong>在 NFS 客户端使用 showmount 命令查看NFS服务器中导出的共享目录</strong><br>命令格式：<code>showmount [参数] [NFS服务器的地址]</code><br>常用参数有：<br>　-e——查询/显示NFS服务器中可用的共享目录。<br>　-a——查询/显示NFS服务器上的共享目录和所有连接客户端的信息。<br>　-d——只显示被本机挂载的共享目录的信息。<br>　 -v——显示showmount命令程序的版本号。 </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@client ~] showmount -e 192.168.1.1
 Export list for 192.168.1.1:
@@ -545,8 +561,9 @@ welcome 192.168.1.1 test.com<span aria-hidden="true" class="line-numbers-rows"><
 
 
 
-<h2 id="3、使用-Windows-客户端访问-NFS-服务器中的共享文件"><a href="#3、使用-Windows-客户端访问-NFS-服务器中的共享文件" class="headerlink" title="3、使用 Windows 客户端访问 NFS 服务器中的共享文件"></a>3、使用 Windows 客户端访问 NFS 服务器中的共享文件</h2><p>由于目前使用笔记本是 ”家庭版本“ 没有 NFS 服务暂就没写步骤 ，后期会补上来的  &gt; _ &lt;</p>
-<p> <img src="../img/nfs2.jpg" alt="img"></p>
+<h2 id="3、使用-Windows-客户端访问"><a href="#3、使用-Windows-客户端访问" class="headerlink" title="3、使用 Windows 客户端访问"></a>3、使用 Windows 客户端访问</h2><p><strong>使用 Windows 客户端访问 NFS 服务器中的共享文件</strong></p>
+<p>由于目前使用笔记本是 ”家庭版本“ 没有 NFS 服务暂就没写步骤 ，后期会补上来的  &gt; _ &lt;</p>
+<p> <img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/nfs2.jpg" alt="img"></p>
 
                 
             </div>
@@ -610,7 +627,11 @@ welcome 192.168.1.1 test.com<span aria-hidden="true" class="line-numbers-rows"><
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -805,11 +826,23 @@ welcome 192.168.1.1 test.com<span aria-hidden="true" class="line-numbers-rows"><
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -842,11 +875,23 @@ welcome 192.168.1.1 test.com<span aria-hidden="true" class="line-numbers-rows"><
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1160,6 +1205,8 @@ welcome 192.168.1.1 test.com<span aria-hidden="true" class="line-numbers-rows"><
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

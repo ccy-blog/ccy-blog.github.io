@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
+	<link rel="stylesheet" href="/js/prism/prism.css">
+
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
@@ -431,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -498,9 +513,9 @@
 <h2 id="二、配置单子网的DHCP服务"><a href="#二、配置单子网的DHCP服务" class="headerlink" title="二、配置单子网的DHCP服务"></a>二、配置单子网的DHCP服务</h2><blockquote>
 <p>动态分配的 IP 地址的范围为 192.168.1.20～192.168.1.100<br>子网掩码为 255.255.255.0<br>默认网关为 192.168.1.254<br>客户端使用的 DNS 服务器的 IP 地址为 8.8.8.8<br>所在的域名为 xyz.edu,<br>并为其中的一台客户机保留 192.168.1.64 地址</p>
 </blockquote>
-<h3 id="1-配置DHCP自身的网络参数"><a href="#1-配置DHCP自身的网络参数" class="headerlink" title="1. 配置DHCP自身的网络参数"></a>1. 配置DHCP自身的网络参数</h3><p>添加网络<br><img src="../img/dhcp0.png" alt="1621988717997"></p>
-<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="../img/dhcp01.png" alt="1621989008068"></p>
-<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="../img/dhcp1.png" alt="1621952959542"><br><img src="../img/dhcp2.png" alt="1621953070703"></p>
+<h3 id="1-配置DHCP自身的网络参数"><a href="#1-配置DHCP自身的网络参数" class="headerlink" title="1. 配置DHCP自身的网络参数"></a>1. 配置DHCP自身的网络参数</h3><p>添加网络<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp0.png" alt="1621988717997"></p>
+<p>虚拟机-&gt;设置-&gt;硬件-&gt;网络适配器-&gt;自定义-&gt;网络连接-&gt;自定义（VMnet9）<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp01.png" alt="1621989008068"></p>
+<p>启动应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp1.png" alt="1621952959542"><br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp2.png" alt="1621953070703"></p>
 <h3 id="2-修改服务器的主配置文件"><a href="#2-修改服务器的主配置文件" class="headerlink" title="2. 修改服务器的主配置文件"></a>2. 修改服务器的主配置文件</h3><p><strong>修改 DHCP 服务器的主配置文件 /etc/dhcp/dhcpd.conf →启动 DHCP 服务</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# cp -p /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example /etc/dhcp/dhcpd.conf 
 [root@localhost ~]# vim /etc/dhcp/dhcpd.conf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -532,7 +547,7 @@ success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 <h3 id="3-Linux客户端测试"><a href="#3-Linux客户端测试" class="headerlink" title="3. Linux客户端测试"></a>3. Linux客户端测试</h3><p><strong>Linux 客户端配置与测试。编辑客户端的网卡配置文件，将网卡获取 IP 地址的方式改为 dhcp →重启网络服务→查看客户端是否获取了 IP 地址等网络参数</strong></p>
 <ul>
-<li>应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4，设置 <strong>IPv4 Method</strong> 为<strong>自动（DHCP）</strong>，<strong>关闭再打开有线连接</strong>，再查看<strong>有线-&gt;设置</strong>。<br><img src="../img/dhcp3.png" alt="1621987902942"></li>
+<li>应用程序-&gt;系统设置-&gt;网络-&gt;有线-&gt;设置-&gt; IPv4，设置 <strong>IPv4 Method</strong> 为<strong>自动（DHCP）</strong>，<strong>关闭再打开有线连接</strong>，再查看<strong>有线-&gt;设置</strong>。<br><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp3.png" alt="1621987902942"></li>
 </ul>
 <h3 id="4-查看租用情况"><a href="#4-查看租用情况" class="headerlink" title="4. 查看租用情况"></a>4. 查看租用情况</h3><p><strong>在服务器端使用 cat 命令查看租约文件 dhcpd.leases，了解租用情况</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@localhost ~]# cat /var/lib/dhcpd/dhcpd.leases
@@ -554,7 +569,7 @@ lease 192.168.1.20 {
 
 
 <h3 id="5-Windows-用户客户端"><a href="#5-Windows-用户客户端" class="headerlink" title="5. Windows 用户客户端"></a>5. Windows 用户客户端</h3><p><code>win + R</code> 输入 <code>cmd</code> ，执行指令：<br>释放 IP 地址：<code>ipconfig /release</code><br>重新申请 IP 地址：<code>ipconfig /renew</code><br>执行：<code>ipconfig /all</code></p>
-<p><img src="../img/dhcp4.png" alt="1621989409748"></p>
+<p><img src="https://gitee.com/ccy-blog/ccyblog-img/raw/master/img/dhcp4.png" alt="1621989409748"></p>
 <h2 id="三、使用-DHCP-中继代理为多子网分配-IP-地址"><a href="#三、使用-DHCP-中继代理为多子网分配-IP-地址" class="headerlink" title="三、使用 DHCP 中继代理为多子网分配 IP 地址"></a>三、使用 DHCP 中继代理为多子网分配 IP 地址</h2><p>由于 DHCP 客户端与 DHCP 服务器之间是通过广播包的通信方式，来寻找对方并获得 IP 地址等网络参数的，当服务器和客户端处在不同网段时，必须通过路由器或具有路由功能的三层交换机实现连接，但广播包是不能直接穿过路由器或三层交换机的（即路由器/三层交换机不能转发广播包）。因此，当 DHCP 客户端与 DHCP 服务器之间有路由器时，无法完成IP地址的申请和获取。其解决问题的方法有以下三种:</p>
 <ul>
 <li>在每个子网中分别部署一台 DHCP 服务器，让服务器为各自的子网中的客户端分配 IP 地址等网络参数。此方法管理分散且投入成本较大，在实际中很少采用。</li>
@@ -626,7 +641,11 @@ lease 192.168.1.20 {
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -821,11 +840,23 @@ lease 192.168.1.20 {
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -858,11 +889,23 @@ lease 192.168.1.20 {
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AYang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1176,6 +1219,8 @@ lease 192.168.1.20 {
 </footer>
 
 <div class="progress-bar"></div>
+
+<script src="/js/prism/prism.js" async></script>
 
 
     <!-- 搜索遮罩框 -->

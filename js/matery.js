@@ -77,7 +77,9 @@ $(function () {
             $(this).wrap('<div class="img-item" data-src="' + imgPath + '" data-sub-html=".caption"></div>');
             // 图片添加阴影
             $(this).addClass("img-shadow img-margin");
-            // 图片添加字幕
+            
+			/* 图片下的字，如果想显示就删除该注释 
+			// 图片添加字幕
             let alt = $(this).attr('alt');
             let title = $(this).attr('title');
             let captionText = "";
@@ -99,7 +101,9 @@ $(function () {
                 captionDiv.appendChild(captionEle);
                 this.insertAdjacentElement('afterend', captionDiv)
             }
+			*/
         });
+		
         $('#articleContent, #myGallery').lightGallery({
             selector: '.img-item',
             // 启用字幕
