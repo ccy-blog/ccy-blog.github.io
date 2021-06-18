@@ -528,10 +528,10 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/unbound.service
 
 
 <h3 id="3-编辑配置文件"><a href="#3-编辑配置文件" class="headerlink" title="3. 编辑配置文件"></a>3. 编辑配置文件</h3><p><strong>使用 vim 编辑配置文件 unbound.conf，对服务器全局参数进行配置</strong></p>
-<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，在末行模式使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
 <pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">// 配置区域的全局参数：使用
 interface: 192.168.8.1                   // 52行，设置监听的网络接口(默认监听localhost网络接口)
-access-control: 192.168.8.0/24 allow     // 203行，允许allow或拒绝refuse给哪些地址提供解析服务
+access-control: 192.168.8.0/24 allow     // 246行，允许allow或拒绝refuse给哪些地址提供解析服务
 username: "”                             // 295行，改成空字符串,表示任何用户均可访问
 domain-insecure: "xyz.edu"               // 504行，跳过验证域 “xyz.edu”，以避免信任链验证失败
 include: /etc/unbound/local.d/*.conf     // 681行，将指定的其他可能的配置文件包含进当前文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -539,33 +539,29 @@ include: /etc/unbound/local.d/*.conf     // 681行，将指定的其他可能的
 
 
 <h3 id="4-配置正向和反向解析记录"><a href="#4-配置正向和反向解析记录" class="headerlink" title="4. 配置正向和反向解析记录"></a>4. 配置正向和反向解析记录</h3><p><strong>配置正向解析记录和反向解析记录。可以在全局配置文件中配置，也可以在 /etc/unbound/local.d 目录中定义一个以 .conf 结尾的文件中（如 /etc/unbound/local.d/domain.conf ）配置（以全局配置文件中的第454 行～第470行为格式模板)。在此，继续在全局配置文件中配置正向和反向解析记录</strong></p>
-<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
-<pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">local-zone: "xyz.edu." static //455行:设置解析的区域名
-// 添加以下 7 行 local-data，以定义正向解析记录
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，在末行模式使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">local-zone: "xyz.edu." static // 680行:设置解析的区域名，此行不输入
+// 添加以下 4 行 local-data，以定义正向解析记录
 local-data: "xyz.edu. 86400 IN SOA dns1.xyz.edu. root.xyz.edu 1 1D 1H 1W 1H"
-local-data: "dns1.xyz.edu.  IN A     192.168.8.1"
-local-data: "dns2.xyz.edu.  IN A     192.168.8.2"
-local-data: "www.xyz.edu.   IN A     192.168.8.3"
-local-data: "ftp.xyz.edu.   IN CNAME www.xyz.edu."
-local-data: "mail.xyz.edu.  IN A     192.168.8.4"
-local-data: "xyz.edu.       IN MX 5  mail.xyz.edu."
-// 添加以下 5 行 local-data-ptr，以定义反向解析记录
+local-data: "dns1.xyz.edu.   IN A      192.168.8.1"
+local-data: "dns2.xyz.edu.   IN A      192.168.8.2"
+local-data: "cname.xyz.edu.  IN CNAME  dns1.xyz.edu."
+local-data: "xyz.edu.        IN MX 5   dns1.xyz.edu."
+// 添加以下 2 行 local-data-ptr，以定义反向解析记录
 local-data-ptr: "192.168.8.1 dns1.xyz.edu"
-local-data-ptr: "192.168.8.2 dns2.xyz.edu"
-local-data-ptr: "192.168.8.3 www.xyz.edu"
-local-data-ptr: "192.168.8.3 ftp.xyz.edu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+local-data-ptr: "192.168.8.2 dns2.xyz.edu"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="5-配置转发"><a href="#5-配置转发" class="headerlink" title="5. 配置转发"></a>5. 配置转发</h3><p><strong>配置转发。任何一台 DNS 服务器能直接提供的解析记录都是有限的，当用户请求的解析记录超出了某台 DNS 服务器所能解析的范围时，就需要在该 DNS 服务器上设置转发功能，以便把超范围的用户解析请求转发给其他 DNS 服务器代为解析。若要将本 DNS 服务器的解析请求转发给由 ISP 提供的 IP 地址为 8.8.8.8 的公共 DNS 服务器，则只要在 unbound.conf 作以下修改便可。</strong> </p>
-<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
+<h3 id="5-配置转发"><a href="#5-配置转发" class="headerlink" title="5. 配置转发"></a>5. 配置转发</h3><p><strong>配置转发。任何一台 DNS 服务器能直接提供的解析记录都是有限的，当用户请求的解析记录超出了某台 DNS 服务器所能解析的范围时，就需要在该 DNS 服务器上设置转发功能，以便把超范围的用户解析请求转发给其他 DNS 服务器代为解析。<font color="red">若要将本 DNS 服务器的解析请求转发给由 ISP 提供的 IP 地址为 8.8.8.8 的公共 DNS 服务器</font>，则只要在 unbound.conf 作以下修改便可。</strong> </p>
+<p>执行指令：<code>vim /etc/unbound/unbound.conf</code>，在末行模式使用 <code>/参数名</code> 跳转到大致位置配置参数</p>
 <pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">forward-zone:                // 843行，定义转发forward
 	name: "."                // 转发所有的查询
 	forward-addr: 8.8.8.8    // 将解析请求转发到指定IP地址的DNS服务器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="6-检测配置文件语法错误"><a href="#6-检测配置文件语法错误" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<h3 id="6-检测配置文件语法错误："><a href="#6-检测配置文件语法错误：" class="headerlink" title="6. 检测配置文件语法错误："></a>6. 检测配置文件语法错误：</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns1 ~]# unbound-checkconf 
 unbound-checkconf: no errors in /etc/unbound/unbound.conf
 [root@dns1 ~]# systemctl restart unbound<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -584,27 +580,28 @@ success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 nameserver 192.168.8.1
 
 [root@localhost ~]# nslookup
-&gt; www.xyz.edu
+&gt; dns1.xyz.edu                   // 验证正向解析记录
 Server:		192.168.8.1
 Address:	192.168.8.1#53
 
-Name:	www.xyz.edu
-Address: 192.168.8.3
-&gt; 192.168.8.1
+Name:	dns1.xyz.edu
+Address: 192.168.8.1            
+&gt; 192.168.8.1                    // 验证反向解析记录
+Server:		192.168.8.1
+Address:	192.168.8.1#53
+
 1.8.168.192.in-addr.arpa	name = dns1.xyz.edu.
-&gt; set type=cname
-&gt; ftp.xyz.edu
+
+&gt; set type=cname                // 验证别名记录的解析结果
+&gt; cname.xyz.edu
 Server:		192.168.8.1
 Address:	192.168.8.1#53
 
-ftp.xyz.edu	canonical name = www.xyz.edu.
-&gt; set type=mx
-&gt; xyz.edu
-Server:		192.168.8.1
-Address:	192.168.8.1#53
+cname.xyz.edu	canonical name = dns1.xyz.edu.
+&gt; www.baidu.com                 // 验证转发功能的解析结果(失败,?????)
 
-xyz.edu	mail exchanger = 5 mail.xyz.edu.
-&gt; exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+&gt; exit                          // 退出nslookup命令,结束测试<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -632,16 +629,16 @@ forward-zone:                       // 844行:定义转发forward
 
 
 
-<h3 id="6-检测配置文件语法错误-1"><a href="#6-检测配置文件语法错误-1" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns1 ~]# unbound-checkconf 
+<h3 id="6-检测配置文件语法错误"><a href="#6-检测配置文件语法错误" class="headerlink" title="6. 检测配置文件语法错误"></a>6. 检测配置文件语法错误</h3><p><strong>检测配置文件是否有语法错误，没有错误后，重启服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns2 ~]# unbound-checkconf 
 unbound-checkconf: no errors in /etc/unbound/unbound.conf
-[root@dns1 ~]# systemctl restart unbound<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+[root@dns2 ~]# systemctl restart unbound<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="7-在服务器端的防火墙中开放DNS服务-1"><a href="#7-在服务器端的防火墙中开放DNS服务-1" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns1 ~]# firewall-cmd --permanent --add-service=dns
+<h3 id="7-在服务器端的防火墙中开放DNS服务-1"><a href="#7-在服务器端的防火墙中开放DNS服务-1" class="headerlink" title="7.  在服务器端的防火墙中开放DNS服务"></a>7.  在服务器端的防火墙中开放DNS服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[root@dns2 ~]# firewall-cmd --permanent --add-service=dns
 success
-[root@dns1 ~]# firewall-cmd --reload
+[root@dns2 ~]# firewall-cmd --reload
 success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
@@ -651,25 +648,19 @@ success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 nameserver 192.168.8.2
 
 [root@localhost ~]# nslookup
-&gt; www.xyz.edu
+&gt; dns1.xyz.edu                   // 验证正向解析记录
 Server:		192.168.8.2
 Address:	192.168.8.2#53
 
-Name:	www.xyz.edu
-Address: 192.168.8.3
-&gt; set type=cname
-&gt; ftp.xyz.edu
+Name:	dns1.xyz.edu
+Address: 192.168.8.1
+&gt; 192.168.8.1                    // 验证反向解析记录
 Server:		192.168.8.2
 Address:	192.168.8.2#53
 
-ftp.xyz.edu	canonical name = www.xyz.edu.
-&gt; set type=mx
-&gt; xyz.edu
-Server:		192.168.8.2
-Address:	192.168.8.2#53
+1.8.168.192.in-addr.arpa	name = dns1.xyz.edu.
 
-xyz.edu	mail exchanger = 5 mail.xyz.edu.
-&gt; exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&gt; exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
