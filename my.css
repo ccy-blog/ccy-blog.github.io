@@ -1,0 +1,332 @@
+/* markdown 加粗 ** ** 内容的颜色 */
+.markdown-section strong {
+  color: rgb(239, 112, 96);
+}
+
+
+/* 相对固定 导航栏 在顶部 */
+.app-nav{
+  display: none;				/* 默认是开启的, 这里我关闭了 */
+  position: fixed;
+  margin: 0;
+  padding: 10px 50px 10px 0;	/*上右、下左 给 github 腾出位置*/
+  padding: 10px 100px 10px 0;
+  width: calc(100% - 325px);
+  background-color: #fff;
+  height: 55px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 相对固定 github 在左上角 */
+.github-corner{
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+}
+
+/* markdown 代码块 内容边框 */
+.markdown-section code {
+  border-radius: 2px;
+  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  font-size: 16px !important;
+  margin: 0 2px;
+  padding: 3px 5px;
+  white-space: nowrap;
+  border: 1px solid #282c34;
+  color: rgb(184, 101, 208);
+}
+
+
+/* markdown 图片、代码块 阴影 */
+.markdown-section img, .markdown-section pre {
+  box-shadow: 2px 2px 20px 6px rgb(255, 255, 255) !important;
+}
+
+/* 鼠标悬停在链接上效果（下划线） */
+.markdown-section a:not(:hover) {
+  text-decoration: none;
+}
+
+/* 以下 侧边栏调节 */
+aside.sidebar ul li {
+  margin: 0;
+  position: relative;
+}
+
+aside.sidebar ul li ul {
+  margin: 6px 0;
+}
+
+aside.sidebar ul li p {
+  padding-left: 22px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+aside.sidebar ul li a {
+  line-height: 35px;
+  font-size: 14px;
+  padding: 3px 0 3px 22px;
+}
+
+aside.sidebar ul li.active > a {
+  font-size: 16px !important;
+}
+
+aside.sidebar ul li.active > a:before {
+  content: '' !important;
+  position: absolute !important;
+  margin: 0 !important;
+  width: 10px !important;
+  height: 10px !important;
+  top: 15px !important;
+  left: 0px !important;
+  border-radius: 50% !important;
+  background-color: #fed24a !important;
+  box-shadow: 0 0 0 3px rgba(254, 210, 74, 0.4) !important;
+}
+/* 以上侧边栏调节 */
+
+/* h1 标题样式 */
+h1 span{
+  display:inline-block;
+  background: rgb(66, 185, 131);
+  color:#ffffff;
+  padding:  10px  16px;
+  border-radius:5px;
+  box-shadow: 1px 1px 3px black;
+}
+
+/* markdown h1 标题样式 */
+.markdown-section h1 {
+  margin: 3rem 0 0rem 0;
+}
+
+/* markdown h2 标题样式 */
+.markdown-section h2 {
+  margin: 1.5rem 0 0rem;
+}
+
+/* 覆盖页 h1 标题样式 */
+section.cover h1 {
+  margin: 0;
+}
+
+
+/* 图片、代码块 圆角化 */
+img, pre {
+  border-radius: 5px;
+}
+
+/* 添加代码块复制按钮样式 */
+.docsify-copy-code-button {
+  background: #00a1d6 !important;
+  color: #FFFFFF !important;
+  font-size: 13px !important;
+  border-radius: 5px !important;
+}
+
+
+/* 伪元素内容 */
+::after{
+  color: #9da2fd !important;
+  font-size: 13px !important;
+}
+
+/* markdown 字体大小 */
+.markdown-section > p {
+  font-size: 16px !important;
+}
+
+/* 代码块 内容背景颜色 */
+p code{
+  background-color: rgb(255, 255, 255) !important;
+}
+
+/* markdown 代码块 顶部样式 */
+.markdown-section pre:before {
+  content: '';
+  display: block;
+  background: url(images/markdown_code_top.png);
+  height: 30px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-color: #1C1C1C;
+  background-position: 10px 10px;
+}
+
+/* markdown 代码块 内容背景颜色 */
+.markdown-section pre > code {
+  color: #c0c3c1 !important;
+  font-family: 'Inconsolata', consolas,"PingFang SC", "Microsoft YaHei", monospace !important;
+  background-color: #212121 !important;    //#accfff  #282c34
+  font-size: 15px !important;
+  white-space: pre !important;
+  line-height: 1.5 !important;
+  -moz-tab-size: 4 !important;
+  -o-tab-size: 4 !important;
+  tab-size: 4 !important;
+  /*border-radius: .3em;*/
+}
+
+/* markdown 代码块 左右空白背景颜色 */
+pre {
+  background-color: #212121 !important;
+}
+
+/* markdown 代码块 内间距 */
+.markdown-section pre {
+  padding-left: 0 !important;
+  padding-right: 0px !important;
+}
+
+/* 以下是显示宽度小于 600, 对 代码块内容 样式进行修改 */
+@media (min-width:600px) {
+  .markdown-section pre > code {
+	font-size: 15px !important;
+	letter-spacing: 1.1px !important;
+  }
+
+}
+@media (max-width:600px) {
+  .markdown-section pre > code {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 16px !important;
+  }
+  pre:after {
+	content: "" !important;
+  }
+}
+@media (min-width:600px) {
+  pre code {
+	/*box-shadow: 2px 1px 20px 2px #aaa;*/
+	/*border-radius: 10px !important;*/
+	padding-left: 20px !important;
+  }
+
+}
+@media (max-width:600px) {
+  pre {
+	padding-left: 3px !important;
+	padding-right: 3px !important;
+	margin-left: -20px !important;
+	margin-right: -20px !important;
+	box-shadow: 0px 0px 20px 0px #f7f7f7 !important;
+  }
+
+  /*代码块复制按钮默认隐藏*/
+  .docsify-copy-code-button {
+	display: none;
+  }
+
+  .advertisement{
+	display: none;
+  }
+}
+/* 以上是显示宽度小于 600, 对 代码块内容 样式进行修改 */
+
+/* markdown  tip 类型警报字体、表格 字体大小 */
+.markdown-section p.tip,
+.markdown-section tr:nth-child(1n) {
+  font-size: 16px !important;
+}
+
+/* 列表样式 */
+ol, ul, li{
+  line-height: 27px !important;
+  font-size: 16px !important;
+}
+
+/* markdown 文档外间距 */
+.markdown-section {
+  margin: 0 3.2% !important;
+}
+
+/* 以下是 修改代码块 代码颜色*/
+.token.directive.keyword{		/* 关键字 */
+  color: #4faee2 !important;
+}
+
+.token.keyword{					/* 语言 关键字 */
+  color: #c678dd !important;
+}
+
+.token.comment{					/* 注释内容 */
+  color: #737c8b !important;
+}
+
+.token.tag{						
+  color: #a589ad !important;	/* <> 中的内容 */
+}
+
+.token.attr-name{				/* 键值对, 键 */
+  color: #de916c !important;
+}
+
+.token.attr-value{				/* 键值对, 值 */
+  color: #4faee2 !important;
+}
+
+.token.macro.property{
+  color: #4faee2 !important;	/* 键值对, 键 */
+}
+
+.token.function{
+  color: #e6b456 !important;	/* 函数名 */
+}
+.token.string{
+  color: #98b755 !important;	/* '' "" 字符串内容 */
+}
+.token.punctuation{				
+  color: #c0c3c1 !important;	/* <> 中的内容 */
+}
+
+.token.number{					
+  color:#c0c3c1  !important;	/* 数字 */
+}
+/* 以上是 修改代码块 代码颜色*/
+
+
+/* 链接文本 字体大小 */
+a.section-link{
+  font-size: .9rem !important;
+}
+
+/* 滚动条宽度 */
+::-webkit-scrollbar{width:5px;}
+
+/* 滚动条颜色 */
+::-webkit-scrollbar-thumb{
+  background: #33a9dc;
+  background-image: linear-gradient(#6ecd56, #33a9dc, #cb6196, #c16290);
+  border-radius: 2em;
+}
+
+
+/* 广告位置 */
+.advertisement {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 110px;
+  box-shadow: -1px 0 2px 0px #c5ebda;
+  padding: 10px;
+  z-index: 99;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* 广告内容 间距 */
+.advertisement p,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+/* 广告字体大小 */
+.advertisement .Tencent_code h4 {
+  font-size: 15px;
+  color: #25a46a;
+  margin-bottom: 10px;
+}

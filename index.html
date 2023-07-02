@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CY' NoteBook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <!-- 支持 LaTex 语言 -->
+  <link rel="stylesheet" href="plugin/KaTex/katex.min.css"/>
+  <link rel="stylesheet" href="plugin/css/iconfont.css">
+  <link rel="stylesheet" href="plugin/custom.css">
+  
+  <!-- 复制内容出现弹窗 -->
+  <link rel="stylesheet" href="plugin/sweetalert.min.css" type='text/css' media='all' />
+  
+  <!-- 标签图标> -->
+  <link rel="icon" href="images/favicon.svg">
+  
+  <!-- 友链 -->
+  <link rel="stylesheet" href="plugin/css/friends-link.css">
+ 
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="my.css">
+  
+  <!-- 代码 样式 -->
+  <!--<link rel="stylesheet" href="plugin/prism/my/myJS_noCSS/prism.css">-->
+ 
+</head>
+<body>
+  <div id="app">加载中...</div>
+  <script>
+    window.$docsify = {
+      name: "<p>CY\' NoteBook</p>",			// 主页标题
+	  nameLink: 'http://www.ccyblog.top',	// 主页标题链接
+	  repo: 'ccy-blog',						// github 图标
+	  themeColor: '#007be8',				// 主题颜色 (R, G-3, B+48) 默认 (66, 185, 131)
+	  //loadSidebar: true,					// 从 _sidebar.md 文件加载侧边栏 (默认加载 文件自己侧边栏)
+	  auto2top: true,						// 当链接路径改变时, 滚动到屏幕的顶部
+	  loadNavbar: true,						// 从 _navbar.md 加载导航栏(默认没有)
+	  mergeNavbar: true,					// Navbar 将在小屏幕上与侧边栏合并
+	  
+	  executeScript: true,					// 执行页面上的脚本。只解析第一个脚本标记（演示）。如果存在Vue，则默认开
+	  maxLevel: 6,							// 最大的内容表级别
+	  subMaxLevel: 6,						// 在自定义边栏中添加目录（TOC)
+	  
+	  externalLinkTarget: '_blank',			// 外链打开方式：_blank 表示在新标签页中打开
+	  //coverpage: true,						// 从 _coverpage.md 加载封面
+      //onlyCover: true,						// 只显示封面页
+      //topMargin: 60,
+		
+	
+	  
+	  // 添加页脚
+	  footer: {
+        copy: '<span id="sitetime"></span> <br/> <span>Copyright &copy; 2021 - 至今</span>',
+		auth: ' <a href="https://ccy-blog.github.io/" target="_blank">🏷️ Blog</a>',
+		pre: '<hr/>',
+		style: 'text-align: left;',
+	  },
+	  
+	  // 添加搜索框
+	  search: {
+        paths: 'auto',
+        placeholder: '🔍 搜索',
+        noData: '😒 找不到结果',
+        // Headline depth, 1 - 6
+        depth: 6,
+        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+      },
+	  
+	  // 支持 PDF 页面显示
+	  markdown: {
+        renderer: {
+          code: function(code, lang, base=null) {
+
+            if (lang.toLowerCase() === "dot") {
+              return (
+                      '<div class="viz">'+ Viz(code, "SVG")+'</div>'
+              );
+            }
+
+            var pdf_renderer = function(code, lang, verify) {
+              function unique_id_generator(){
+                function rand_gen(){
+                  return Math.floor((Math.random()+1) * 65536).toString(16).substring(1);
+                }
+                return rand_gen() + rand_gen() + '-' + rand_gen() + '-' + rand_gen() + '-' + rand_gen() + '-' + rand_gen() + rand_gen() + rand_gen();
+              }
+              if(lang && !lang.localeCompare('pdf', 'en', {sensitivity: 'base'})){
+                if(verify){
+                  return true;
+                }else{
+                  var divId = "markdown_code_pdf_container_" + unique_id_generator().toString();
+                  var container_list = new Array();
+                  if(localStorage.getItem('pdf_container_list')){
+                    container_list = JSON.parse(localStorage.getItem('pdf_container_list'));
+                  }
+                  container_list.push({"pdf_location": code, "div_id": divId});
+                  localStorage.setItem('pdf_container_list', JSON.stringify(container_list));
+                  return (
+                          '<div style="margin-top:'+ PDF_MARGIN_TOP +'; margin-bottom:'+ PDF_MARGIN_BOTTOM +';" id="'+ divId +'">'
+                          + '<a href="'+ code + '"> Link </a> to ' + code +
+                          '</div>'
+                  );
+                }
+              }
+              return false;
+            }
+            if(pdf_renderer(code, lang, true)){
+              return pdf_renderer(code, lang, false);
+            }
+            //return this.origin.code.apply(this, arguments);
+            return (base ? base : this.origin.code.apply(this, arguments));
+          }
+        }
+      },	
+		
+		// 美化提示样式
+		'flexible-alerts': {
+			style: 'callout'
+		},
+    }
+  </script>
+  
+  <!-- 添加页脚 -->
+  <script src="plugin/docsify-footer-enh.min.js"></script>
+  
+  <!-- 搜索功能 -->
+  <script src="plugin/search.min.js"></script>
+  
+  <!-- 支持 DOT 语言 -->
+  <script src="plugin/viz.js"></script>
+  
+  <!-- 支持 Latex 语言 -->
+  <script src="plugin/KaTex/katex.min.js"></script>
+  <script src="plugin/KaTex/marked.min.js"></script>
+  <script src="plugin/KaTex/docsify-katex.js"></script>
+
+  <!-- 支持 PDF 页面显示 -->
+  <script src="plugin/pdfobject.min.js"></script>
+  <script src="plugin/docsify-pdf-embed.js"></script>
+  
+  <!-- 支持回到顶部 -->
+  <script src="plugin/jquery.js"></script>
+  <script src="plugin/jquery.goup.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.goup({
+        trigger: 100,
+        bottomOffset: 52,
+        locationOffset: 25,
+        //title: 'TOP',
+        titleAsText: true
+      });
+    });
+  </script>
+  
+  <!-- 鼠标点击出现爱心 -->
+  <script src="plugin/click_heart.js"></script>
+  
+  <!-- 代码块 复制代码按钮 -->
+  <script src="plugin/docsify-copy-code.js"></script>
+  
+  <!-- 复制内容出现弹窗 -->
+  <script src="plugin/sweetalert.min.js"></script>
+  <script>
+	document.body.oncopy = function () {
+    swal("复制成功 🎉", "若要转载或引用请务必保留原文链接，并申明来源。如果你觉得本仓库不错，那就来 GitHub 给个 Star 吧 😊   - by 陈春杨", "success"); };
+  </script>
+
+	<!-- 运行时间统计 -->
+	<script language=javascript>
+	  function siteTime() {	  
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth() + 1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+		var t1 = Date.UTC(2021, 05, 21, 00, 00, 00); //北京时间2021-05-21 00:00:00
+		var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+		var diff = t2 - t1;
+		var diffYears = Math.floor(diff / years);
+		var diffDays = Math.floor((diff / days) - diffYears * 365);
+		var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+		var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+		var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+		//document.getElementById("sitetime").innerHTML = " 本网站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒 ";
+		if(null != document.getElementById("sitetime")){
+		
+			document.getElementById("sitetime").innerHTML = " 本网站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒 ";
+		}
+	  }
+	  //siteTime();
+	  window.onload = siteTime;
+	</script>
+  
+	<!-- 美化提示样式 -->
+	<script src="plugin/flexible-alerts/docsify-plugin-flexible-alerts.min.js"></script>
+  
+	<!-- 右下角添加模型 3.0.5 version -->
+	<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+	<script>
+	  L2Dwidget.init({
+		"model": {
+		  //jsonpath控制显示那个小萝莉模型，
+		  //(切换模型需要改动)
+		  jsonPath: "plugin/live2d/live2d_xiazeyu/models/koharu/assets/koharu.model.json",
+		  "scale": 1
+		},
+		"display": {
+		  "position": "right", //看板娘的表现位置
+		  "width": 70,  //小萝莉的宽度
+		  "height": 140, //小萝莉的高度
+		  "hOffset": 35,
+		  "vOffset": -20
+		},
+		"mobile": {
+		  "show": true,
+		  "scale": 0.5
+		},
+		"react": {
+		  "opacityDefault": 0.7,
+		  "opacityOnHover": 0.2
+		}
+	  });
+	</script>
+	
+	
+	<!-- 右下角添加模型 3.0.6 version -->
+	<!--
+	<script src="plugin/live2d/live2d_xiazeyu/js/L2Dwidget.min.js"></script>
+	<script>
+	  L2Dwidget.init({
+		"model": {
+		  //jsonpath控制显示那个小萝莉模型，
+		  //(切换模型需要改动)
+		  jsonPath: "plugin/live2d/live2d_xiazeyu/models/koharu/assets/koharu.model.json",
+		  "scale": 1
+		},
+		"display": {
+		  "position": "right", //看板娘的表现位置
+		  "width": 140,  //小萝莉的宽度
+		  "height": 280, //小萝莉的高度
+		  "hOffset": 35,
+		  "vOffset": -20
+		},
+		"mobile": {
+		  "show": true,
+		  "scale": 0.5
+		},
+		"react": {
+		  opacity: 0.7
+		}
+	  });
+	</script>
+	-->
+	
+	
+	<!-- Live2D 看板娘 -->
+	<!-- -->
+
+  <!-- 访问量统计 -->
+  <script async src="plugin/js/busuanzi.pure.mini.js"></script>
+  
+  <!-- 图片缩放 -->
+  <script src="plugin/zoom-image.min.js"></script>  
+	
+	
+  <!-- 代码块样式优化 -->
+  <!--<script src="plugin/prism/my/myJS_noCSS/prism.js"></script> -->
+  <script src="plugin/prism/js/prism.js"></script>
+  <script src="plugin/prism/js/prism-c.js"></script>
+  <script src="plugin/prism/js/prism-cpp.js"></script>
+  <script src="plugin/prism/js/prism-css.js"></script>
+  <script src="plugin/prism/js/prism-docker.js"></script>
+  <script src="plugin/prism/js/prism-java.js"></script>
+  <script src="plugin/prism/js/prism-javascript.js"></script>
+  <script src="plugin/prism/js/prism-json.js"></script>
+  <script src="plugin/prism/js/prism-latex.js"></script>
+  <script src="plugin/prism/js/prism-sql.js"></script>
+  <script src="plugin/prism/js/prism-markdown.js"></script>
+  <script src="plugin/prism/js/prism-bash.min.js"></script>
+  <script src="plugin/prism/js/prism-php.min.js"></script>
+  <script src="plugin/prism/js/prism-scala.min.js"></script>
+  <script src="plugin/prism/js/prism-nginx.min.js"></script>
+  <script src="plugin/prism/js/prism-json.min.js"></script>
+  <script src="plugin/prism/js/prism-markdown.min.js"></script>
+  <script src="plugin/prism/js/prism-python.js"></script>
+  <script src="plugin/prism/js/prism-yaml.js"></script>
+  <script src="plugin/prism/js/prism-go.js"></script>
+  <script src="plugin/prism/js/prism-matlab.js"></script>
+
+	
+  <!-- 实现离线化 -->
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('plugin/pwa.js')
+    }
+  </script>
+  
+  
+    <!-- 使用 Gitter 实现一个 IM 即时通讯聊天室功能 -->
+  <script>
+    ((window.gitter = {}).chat = {}).options = {
+      room: 'enjoytoshare/community'
+    };
+  </script>
+  <script src="plugin/sidecar.v1.js" async defer></script>
+  
+  
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!--<script src="plugin/js/docsify.min.js"></script>-->
+  
+
+  
+	<!-- 启用封面, 并在封面不显示导航栏 处理 -->
+  <script>  
+    
+	function coverNavProc(){
+  		
+		// 存在 封面
+		if(1 == document.getElementsByClassName("cover").length){
+			
+			// 链接进入 封面页（路径为: #/）
+			if(2 == window.location.hash.length){
+							
+				// 在 __coverpage.md 中的 GetStarted 链接中添加了 title 属性, 方便使用 attribute 选择器 查找到该链接 并绑定点击事件
+				// 点击 Get Started 前往 README 页面时
+				$("a[title='README']").on("click", function(){
+				
+					// 显示 导航栏
+					document.getElementsByClassName("app-nav")[0].style.display = 'block';
+				});
+				
+				// 监听浏览器历史事件
+				window.addEventListener("popstate", function(){
+				
+					// 通过历史 前进后退 进入封面
+					if(2 == window.location.hash.length){
+					
+						// 关闭导航栏
+						document.getElementsByClassName("app-nav")[0].style.display = 'none';
+					
+					}else{
+						
+						// 其它页面 开启导航栏
+						document.getElementsByClassName("app-nav")[0].style.display = 'block';
+					}			
+				}, false);
+				
+			
+			}else{
+				// 链接进入 主页（路径为: #/README）
+				document.getElementsByClassName("app-nav")[0].style.display = 'block';
+			}
+			
+		}else{
+			// 没有 封面
+			document.getElementsByClassName("app-nav")[0].style.display = 'block';
+		}	
+	}
+	window.onload = coverNavProc;
+	
+  </script>
+</body>
+</html>
